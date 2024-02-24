@@ -4,7 +4,7 @@ import logo from '../../assets/logoRecetas.png';
 
 const Menu = () => {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className=" shadow nav">
   <Container>
     <Navbar.Brand href="#" className="me-auto">
       <img src={logo} alt="logo" className="img-fluid" width={150}/>

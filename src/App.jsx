@@ -5,6 +5,7 @@ import Menu from "./components/common/Menu";
 import Footer from './components/common/Footer';
 import Inicio from './components/pages/Inicio';
 import Administrador from './components/pages/Administrador';
+import FormularioReceta from './components/pages/receta/FormularioReceta';
 
 function App() {
   
@@ -13,7 +14,8 @@ function App() {
     <>
     <Menu></Menu>
     {/*<Inicio></Inicio>*/}
-    <Administrador></Administrador>
+    {/*<Administrador></Administrador>*/}
+    <FormularioReceta></FormularioReceta>
     <Footer></Footer>
     </>
   )
