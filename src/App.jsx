@@ -7,6 +7,7 @@ import Inicio from './components/pages/Inicio';
 import Administrador from './components/pages/Administrador';
 import FormularioReceta from './components/pages/receta/FormularioReceta';
 import Error404 from './components/pages/Error404';
+import DetalleReceta from './components/pages/DetalleReceta';
 
 function App() {
   
@@ -15,9 +16,10 @@ function App() {
     <>
     <Menu></Menu>
     {/*<Inicio></Inicio>*/}
-    {/*<Administrador></Administrador>*/}
+    <Administrador></Administrador>
     {/*<FormularioReceta></FormularioReceta>*/}
-    <Error404></Error404>
+    {/*<Error404></Error404>*/}
+    {/*<DetalleReceta></DetalleReceta>*/}
     <Footer></Footer>
     </>
   )

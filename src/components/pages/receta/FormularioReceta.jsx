@@ -17,7 +17,7 @@ const FormularioReceta = () => {
         className="my-4 border border-darck rounded shadow p-3"
         onSubmit={handleSubmit()}
       >
-        <Form.Group className="mb-3" controlId="formNombreProdcuto">
+        <Form.Group className="mb-3" controlId="formNombreReceta">
           <Form.Label>Nombre de la Receta*</Form.Label>
           <Form.Control
             type="text"
@@ -80,7 +80,7 @@ const FormularioReceta = () => {
           <Form.Text className="text-danger">{errors.ingredientes?.message}</Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formImagen">
+        <Form.Group className="mb-3" controlId="formPreparacion">
           <Form.Label>Preparacion*</Form.Label>
           <Form.Control
             type="text"

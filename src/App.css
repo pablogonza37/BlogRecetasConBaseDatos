@@ -14,6 +14,8 @@
   object-fit: cover;
   height: 395px;
   width: 100%;
+  display: block;
+  z-index: 0;
 }
 
 .img-thumbnail{
@@ -24,4 +26,22 @@
 
 .nav {
     background-color: rgba(231, 231, 6, 0.795);
+}
+
+.card-img-top-nueva {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.relativeContainer {
+  position: relative;
+}
+
+.slogan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; 
 }
