@@ -1,0 +1,17 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.mainSection {
+  flex-grow: 1;
+}
+
+.banner {
+  object-fit: cover;
+  height: 395px;
+  width: 100%;
+}
