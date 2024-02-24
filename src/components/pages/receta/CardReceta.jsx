@@ -1,4 +1,5 @@
 import { Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CardReceta = () => {
     return (
@@ -14,7 +15,7 @@ const CardReceta = () => {
             </Card.Text>
           </Card.Body>
           <Card.Footer className="text-end">
-          <Button className='btn btn-success me-2' >Ver más</Button>
+          <Button className='btn btn-success me-2' as={Link} to="/detalle">Ver más</Button>
         </Card.Footer>
         </Card>
       </Col>

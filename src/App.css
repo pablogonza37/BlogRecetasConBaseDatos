@@ -45,3 +45,8 @@
   transform: translate(-50%, -50%);
   z-index: 1; 
 }
+
+.nav-link:hover{
+text-decoration: underline;
+color: aqua;
+}
