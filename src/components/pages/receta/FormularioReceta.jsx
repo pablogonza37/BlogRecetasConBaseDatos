@@ -98,12 +98,37 @@ const FormularioReceta = () => {
             {errors.categoria?.message}
           </Form.Text>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formImagen">
+          <Form.Label>Descripción*</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ej: Lasña de carne rica."
+            as="textarea"
+            {...register("descripcion_breve", {
+              required: "La descripcion  es obligatorio",
+              minLength: {
+                value: 5,
+                message:
+                  "Debe ingresar como minimo 5 caracteres para la descripcion",
+              },
+              maxLength: {
+                value: 100,
+                message:
+                  "Debe ingresar como maximo 1000 caracteres para la descripcion",
+              },
+            })}
+          />
+          <Form.Text className="text-danger">
+            {errors.descripcion_breve?.message}
+          </Form.Text>
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="formIngredientes">
           <Form.Label>Ingredientes*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: 500g de carne molida, 1 cebolla picada, ..."
+            as="textarea"
             {...register("ingredientes", {
               required: "Ingredientes es obligatorio",
               minLength: {
