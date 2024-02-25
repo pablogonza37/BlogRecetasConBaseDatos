@@ -111,8 +111,8 @@ const FormularioReceta = () => {
                 message: "Debe ingresar como minimo 5 caracteres",
               },
               maxLength: {
-                value: 100,
-                message: "Debe ingresar como maximo 10 caracteres",
+                value: 500,
+                message: "Debe ingresar como maximo 500 caracteres",
               },
             })}
           />
@@ -134,8 +134,8 @@ const FormularioReceta = () => {
                 message: "Debe ingresar como minimo 30 caracteres",
               },
               maxLength: {
-                value: 500,
-                message: "Debe ingresar como maximo 500 caracteres",
+                value: 2000,
+                message: "Debe ingresar como maximo 2000 caracteres",
               },
             })}
           />
