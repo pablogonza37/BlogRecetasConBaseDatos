@@ -1,17 +1,24 @@
 import { Button, Table } from "react-bootstrap";
 import ItemReceta from "./receta/ItemReceta";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { leerRecetasAPI } from "../../helpers/queries";
 
 const Administrador = () => {
-    return (
-        <section className="container mainSection">
+  const [recetas, setRecetas] = useState([]);
+
+  useEffect(() => {
+    leerRecetasAPI();
+  }, []);
+
+  return (
+    <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
         <h1 className="display-4 ">Recetas disponibles</h1>
-        
-        <Link className="btn btn-primary" to='/administrador/crear'>
+
+        <Link className="btn btn-primary" to="/administrador/crear">
           <i className="bi bi-file-earmark-plus"></i>
         </Link>
-        
       </div>
       <hr />
       <Table responsive striped bordered hover>
@@ -31,7 +38,7 @@ const Administrador = () => {
         </tbody>
       </Table>
     </section>
-    );
+  );
 };
 
 export default Administrador;
