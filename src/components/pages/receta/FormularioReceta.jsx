@@ -1,5 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { crearRecetaAPI } from "../../../helpers/queries";
 
 const FormularioReceta = () => {
   const {
@@ -9,13 +10,18 @@ const FormularioReceta = () => {
     reset,
   } = useForm();
 
+  const recetaValidada = (receta) => {
+    console.log(receta);
+    crearRecetaAPI(receta);
+  };
+
   return (
     <section className="container mainSection">
       <h1 className="display-4 mt-5">Nueva receta</h1>
       <hr />
       <Form
         className="my-4 border border-darck rounded shadow p-3"
-        onSubmit={handleSubmit()}
+        onSubmit={handleSubmit(recetaValidada)}
       >
         <Form.Group className="mb-3" controlId="formNombreReceta">
           <Form.Label>Nombre de la Receta*</Form.Label>
@@ -59,9 +65,11 @@ const FormularioReceta = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
           <Form.Label>Categoría*</Form.Label>
-          <Form.Select {...register("categoria", {
+          <Form.Select
+            {...register("categoria", {
               required: "La categoria es obligatoria",
-            })}>
+            })}
+          >
             <option value="">Seleccione una opcion</option>
             <option value="entradas">Entradas</option>
             <option value="platos principales">Platos principales</option>
@@ -73,7 +81,7 @@ const FormularioReceta = () => {
             <option value="aperitivos">Aperitivos</option>
           </Form.Select>
           <Form.Text className="text-danger">
-          {errors.categoria?.message}
+            {errors.categoria?.message}
           </Form.Text>
         </Form.Group>
 
@@ -86,17 +94,17 @@ const FormularioReceta = () => {
               required: "Ingredientes es obligatorio",
               minLength: {
                 value: 5,
-                message:
-                  "Debe ingresar como minimo 5 caracteres",
+                message: "Debe ingresar como minimo 5 caracteres",
               },
               maxLength: {
                 value: 100,
-                message:
-                  "Debe ingresar como maximo 10 caracteres",
+                message: "Debe ingresar como maximo 10 caracteres",
               },
             })}
           />
-          <Form.Text className="text-danger">{errors.ingredientes?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.ingredientes?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPreparacion">
@@ -109,17 +117,17 @@ const FormularioReceta = () => {
               required: "La Preparacion es obligatorio",
               minLength: {
                 value: 30,
-                message:
-                  "Debe ingresar como minimo 30 caracteres",
+                message: "Debe ingresar como minimo 30 caracteres",
               },
               maxLength: {
                 value: 500,
-                message:
-                  "Debe ingresar como maximo 500 caracteres",
+                message: "Debe ingresar como maximo 500 caracteres",
               },
             })}
           />
-          <Form.Text className="text-danger">{errors.preparacion?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.preparacion?.message}
+          </Form.Text>
         </Form.Group>
 
         <Button type="submit" variant="success">

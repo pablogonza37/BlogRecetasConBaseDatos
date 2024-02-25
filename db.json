@@ -1,20 +1,28 @@
 {
-    "recetas":[
-        {
-            "id":"1",
-            "nombreReceta":"Lasagna de carne",
-            "categoria":"Platos principales",
-            "Ingredientes": "500g de carne molida, 1 cebolla picada",
-            "Preparacion": "Cocinar la carne en una sartén con cebolla...",
-            "imagen":"https://images.pexels.com/photos/19589060/pexels-photo-19589060/free-photo-of-comida-carne-fresco-queso.jpeg"
-        },
-        {
-            "id":"2",
-            "nombreReceta":"Lasagna de carne",
-            "categoria":"Platos principales",
-            "Ingredientes": "500g de carne molida, 1 cebolla picada",
-            "Preparacion": "Cocinar la carne en una sartén con cebolla...",
-            "imagen":"https://images.pexels.com/photos/19589060/pexels-photo-19589060/free-photo-of-comida-carne-fresco-queso.jpeg"
-        }
-    ]
+  "recetas": [
+    {
+      "id": "1",
+      "nombreReceta": "Lasagna de carne",
+      "categoria": "Platos principales",
+      "Ingredientes": "500g de carne molida, 1 cebolla picada",
+      "Preparacion": "Cocinar la carne en una sartén con cebolla...",
+      "imagen": "https://images.pexels.com/photos/19589060/pexels-photo-19589060/free-photo-of-comida-carne-fresco-queso.jpeg"
+    },
+    {
+      "id": "2",
+      "nombreReceta": "Lasagna de carne",
+      "categoria": "Platos principales",
+      "Ingredientes": "500g de carne molida, 1 cebolla picada",
+      "Preparacion": "Cocinar la carne en una sartén con cebolla...",
+      "imagen": "https://images.pexels.com/photos/19589060/pexels-photo-19589060/free-photo-of-comida-carne-fresco-queso.jpeg"
+    },
+    {
+      "id": "1298",
+      "nombreReceta": "lasagna",
+      "imagen": "https://images.pexels.com/photos/5864352/pexels-photo-5864352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoria": "platos principales",
+      "ingredientes": "carne molda, cebolla",
+      "preparacion": "cocinar jnuecnuencunuecnuencuneuncuencuneucnuencuencueucnuen"
+    }
+  ]
 }
