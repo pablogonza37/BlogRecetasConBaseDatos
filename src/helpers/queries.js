@@ -17,9 +17,19 @@ export const crearRecetaAPI = async (recetaNueva) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(recetaNueva)
+      body: JSON.stringify(recetaNueva),
     });
-    console.log(resp);
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const borrarRecetaAPI = async (id) => {
+  try {
+    const resp = await fetch(`${URL_Recetas}/${id}`, {
+      method: "DELETE",
+    });
     return resp;
   } catch (error) {
     console.log(error);
