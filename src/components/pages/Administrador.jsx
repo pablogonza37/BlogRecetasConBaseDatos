@@ -8,9 +8,17 @@ const Administrador = () => {
   const [recetas, setRecetas] = useState([]);
 
   useEffect(() => {
-    leerRecetasAPI();
+    consultarAPI();
   }, []);
 
+  const consultarAPI = async () => {
+    try {
+      const resp = await leerRecetasAPI();
+      setRecetas(resp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
@@ -21,7 +29,7 @@ const Administrador = () => {
         </Link>
       </div>
       <hr />
-      <Table responsive striped bordered hover>
+      <Table responsive striped bordered hover className="shadow">
         <thead className="table-dark">
           <tr className="text-center">
             <th>Cod</th>
@@ -32,9 +40,9 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          <ItemReceta></ItemReceta>
-          <ItemReceta></ItemReceta>
-          <ItemReceta></ItemReceta>
+          {recetas.map((receta) => (
+            <ItemReceta key={receta.id} receta={receta}></ItemReceta>
+          ))}
         </tbody>
       </Table>
     </section>
