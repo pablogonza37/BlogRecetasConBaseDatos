@@ -18,14 +18,14 @@
   z-index: 0;
 }
 
-.img-thumbnail{
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+.img-thumbnail {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .nav {
-    background-color: rgba(231, 231, 6, 0.795);
+  background-color: rgba(231, 231, 6, 0.795);
 }
 
 .card-img-top-nueva {
@@ -43,10 +43,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; 
+  z-index: 1;
+  text-shadow: 1px 1px 2px black;
 }
 
-.nav-link:hover{
-text-decoration: underline;
-color: aqua;
+.nav-link:hover {
+  text-decoration: underline;
 }

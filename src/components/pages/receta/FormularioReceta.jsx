@@ -57,6 +57,25 @@ const FormularioReceta = () => {
             {errors.imagen?.message}
           </Form.Text>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formPrecio">
+          <Form.Label>Categoría*</Form.Label>
+          <Form.Select {...register("categoria", {
+              required: "La categoria es obligatoria",
+            })}>
+            <option value="">Seleccione una opcion</option>
+            <option value="entradas">Entradas</option>
+            <option value="platos principales">Platos principales</option>
+            <option value="guarniciones">Guarniciones</option>
+            <option value="postres">Postres</option>
+            <option value="sopas y cremas">Sopas y cremas</option>
+            <option value="ensaladas">Ensaladas</option>
+            <option value="desayunos">Desayunos</option>
+            <option value="aperitivos">Aperitivos</option>
+          </Form.Select>
+          <Form.Text className="text-danger">
+          {errors.categoria?.message}
+          </Form.Text>
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="formIngredientes">
           <Form.Label>Ingredientes*</Form.Label>
