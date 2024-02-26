@@ -1,22 +1,22 @@
 {
   "recetas": [
     {
-      "id": "c721",
-      "nombreReceta": "lasagna de carne",
+      "nombreReceta": "pastel de carne",
       "imagen": "https://images.pexels.com/photos/6046493/pexels-photo-6046493.jpeg",
-      "categoria": "platos principales",
-      "descripcion":"Rica lasagna de carne",
+      "categoria": "Platos principal",
+      "descripcion": "Rica lasagna de carnedsfhbdsfbhjsdbfhjsbdfhsdfbsdhbfhbsdhbfshbdhjbhcjbdshbhjbhjbdjshbfjhsdbfhbsdfhbshdbfjbjbhbsjdbhhjfbsdfhbjhsdbfhjsdbfhbdshbfhsdbfhbsdhfbsjhbfjhsdbfjsdhbfjhsdbfhjsbhdfjsbdf",
       "ingredientes": "12 láminas de pasta para lasaña 500g de carne molida de res 1 cebolla grande, picada 4 dientes de ajo, picados 800g de tomate triturado (puede ser enlatado) 2 cucharadas de pasta de tomate 2 cucharaditas de azúcar 1 cucharadita de orégano seco 1 cucharadita de albahaca seca Sal y ",
-      "preparacion": "Precalienta el horno a 180°C (350°F).\n\nEn una sartén grande, calienta un poco de aceite de oliva a fuego medio. Agrega la cebolla y el ajo, y cocina hasta que estén dorados y fragantes, unos 5 minutos.\n\nAñade la carne molida a la sartén y cocina hasta que esté bien dorada y cocida. Agrega el tomate triturado, la pasta de tomate, el azúcar, el orégano, la albahaca, la sal y la pimienta. Cocina a fuego lento durante unos 20 minutos, revolviendo ocasionalmente, para que los sabores se mezclen bien.\n\nMientras tanto, en un tazón mediano, mezcla el queso ricotta con el huevo y el queso parmesano rallado.\n"
+      "preparacion": "Precalienta el horno a 180°C (350°F).\n\nEn una sartén grande, calienta un poco de aceite de oliva a fuego medio. Agrega la cebolla y el ajo, y cocina hasta que estén dorados y fragantes, unos 5 minutos.\n\nAñade la carne molida a la sartén y cocina hasta que esté bien dorada y cocida. Agrega el tomate triturado, la pasta de tomate, el azúcar, el orégano, la albahaca, la sal y la pimienta. Cocina a fuego lento durante unos 20 minutos, revolviendo ocasionalmente, para que los sabores se mezclen bien.\n\nMientras tanto, en un tazón mediano, mezcla el queso ricotta con el huevo y el queso parmesano rallado.\n",
+      "id": "c721"
     },
     {
-      "id": "8249",
       "nombreReceta": "lasagna de carne",
       "imagen": "https://images.pexels.com/photos/4079520/pexels-photo-4079520.jpeg",
-      "categoria": "platos principales",
-      "descripcion":"Rica lasagna de carne",
+      "categoria": "Aperitivos",
+      "descripcion": "Rica lasagna de carne",
       "ingredientes": "12 láminas de pasta para lasaña 500g de carne molida de res 1 cebolla grande, picada 4 dientes de ajo, picados 800g de tomate triturado (puede ser enlatado) 2 cucharadas de pasta de tomate 2 cucharaditas de azúcar 1 cucharadita de orégano seco 1 cucharadita de albahaca seca Sal y pimienta al gusto 500g de queso ricotta 1 huevo 1/2 taza de queso parmesano rallado 2 tazas de queso mozzarella rallado Aceite de oliva",
-      "preparacion": "Precalienta el horno a 180°C (350°F).\n\nEn una sartén grande, calienta un poco de aceite de oliva a fuego medio. Agrega la cebolla y el ajo, y cocina hasta que estén dorados y fragantes, unos 5 minutos.\n\nAñade la carne molida a la sartén y cocina hasta que esté bien dorada y cocida. Agrega el tomate triturado, la pasta de tomate, el azúcar, el orégano, la albahaca, la sal y la pimienta. Cocina a fuego lento durante unos 20 minutos, revolviendo ocasionalmente, para que los sabores se mezclen bien.\n\nMientras tanto, en un tazón mediano, mezcla el queso ricotta con el huevo y el queso parmesano rallado.\n\nEn una fuente para hornear, extiende una capa delgada de la mezcla de carne en el fondo. Coloca una capa de láminas de pasta sobre la carne. Luego, agrega una capa de la mezcla de queso ricotta. Repite las capas, terminando con una capa de salsa de carne encima.\n\nEspolvorea el queso mozzarella rallado sobre la capa superior.\n\nCubre la fuente para hornear con papel de aluminio y hornea en el horno precalentado durante 25 minutos.\n\nRetira el papel de aluminio y hornea por otros 25 minutos o hasta que el queso esté dorado y burbujeante.\n\nDeja reposar la lasaña durante unos 10-15 minutos antes de servir. Esto ayudará a que se asiente un poco y sea más fácil de cortar."
+      "preparacion": "Precalienta el horno a 180°C (350°F).\n\nEn una sartén grande, calienta un poco de aceite de oliva a fuego medio. Agrega la cebolla y el ajo, y cocina hasta que estén dorados y fragantes, unos 5 minutos.\n\nAñade la carne molida a la sartén y cocina hasta que esté bien dorada y cocida. Agrega el tomate triturado, la pasta de tomate, el azúcar, el orégano, la albahaca, la sal y la pimienta. Cocina a fuego lento durante unos 20 minutos, revolviendo ocasionalmente, para que los sabores se mezclen bien.\n\nMientras tanto, en un tazón mediano, mezcla el queso ricotta con el huevo y el queso parmesano rallado.\n\nEn una fuente para hornear, extiende una capa delgada de la mezcla de carne en el fondo. Coloca una capa de láminas de pasta sobre la carne. Luego, agrega una capa de la mezcla de queso ricotta. Repite las capas, terminando con una capa de salsa de carne encima.\n\nEspolvorea el queso mozzarella rallado sobre la capa superior.\n\nCubre la fuente para hornear con papel de aluminio y hornea en el horno precalentado durante 25 minutos.\n\nRetira el papel de aluminio y hornea por otros 25 minutos o hasta que el queso esté dorado y burbujeante.\n\nDeja reposar la lasaña durante unos 10-15 minutos antes de servir. Esto ayudará a que se asiente un poco y sea más fácil de cortar.",
+      "id": "8249"
     }
   ]
 }

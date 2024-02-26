@@ -29,19 +29,14 @@ const Inicio = () => {
           src="https://images.pexels.com/photos/8629042/pexels-photo-8629042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="imagen banner"
         />
-        
       </div>
       <Container className="mt-5">
         <h2 className="display-4 ">Nuestras Recetas</h2>
         <hr />
         <Row>
-        {recetasInicio.map((recetas) => (
-            <CardReceta
-              key={recetas.id}
-              receta={recetas}
-            ></CardReceta>
+          {recetasInicio.map((recetas) => (
+            <CardReceta key={recetas.id} receta={recetas}></CardReceta>
           ))}
-          
         </Row>
       </Container>
     </section>

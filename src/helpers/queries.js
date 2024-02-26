@@ -44,3 +44,18 @@ export const borrarRecetaAPI = async (id) => {
     console.log(error);
   }
 };
+
+export const editarRecetaAPI = async (recetaModificada, id) => {
+  try {
+    const respuesta = await fetch(`${URL_Recetas}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(recetaModificada),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
