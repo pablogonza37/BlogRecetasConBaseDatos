@@ -10,6 +10,15 @@ export const leerRecetasAPI = async () => {
   }
 };
 
+export const obtenerRecetaAPI = async (id) => {
+  try {
+    const resp = await fetch(URL_Recetas + "/" + id);
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const crearRecetaAPI = async (recetaNueva) => {
   try {
     const resp = await fetch(URL_Recetas, {

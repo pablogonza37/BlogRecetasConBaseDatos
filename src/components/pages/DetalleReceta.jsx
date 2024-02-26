@@ -1,39 +1,50 @@
 import { Container, Card, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { obtenerRecetaAPI } from "../../helpers/queries";
+import { useParams } from "react-router-dom";
 
 const DetalleReceta = () => {
+  const [recetaSelecionada, setRecetaSelecionada] = useState([])
+
+  const {id} = useParams();
+
+  useEffect(()=>{
+    cargarDatosReceta();
+  },[])
+  
+    const cargarDatosReceta = async () => {
+      try {
+        const respuesta = await obtenerRecetaAPI(id);
+        if (respuesta.status === 200) {
+          const recetaEncontrada = await respuesta.json();
+          setRecetaSelecionada(recetaEncontrada);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
   return (
     <Container className="my-5 mainSection">
-      <Card>
-        <Row>
-          <Col md={6}>
+      <Card className=''>
             <Card.Img
               variant="top"
-              src="https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={recetaSelecionada.imagen}
+              className='img-detalle'
             />
-          </Col>
-          <Col md={6}>
             <Card.Body>
-              <Card.Title className="primary-font">Lasaña</Card.Title>
+              <Card.Title className="primary-font display-5">{recetaSelecionada.nombreReceta}</Card.Title>
               <hr />
               <Card.Text>
-                Ingredientes: Lorem ipsum, dolor sit amet consectetur
-                adipisicing elit. Atque, beatae nesciunt impedit quo suscipit
+                <strong>Ingredientes:</strong> {recetaSelecionada.ingredientes}
                 <br />
                 <br />
-                Preparacion: Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Harum nesciunt rem libero ipsa tempora minima facere
-                incidunt necessitatibus illum. Corporis dolorem sapiente
-                deserunt quod animi id deleniti repudiandae quos sint. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Harum
-                doloremque iure, dolorem labore deserunt voluptas eius
-                veritatis? Facilis nihil omnis nobis eos minima tenetur nesciunt
-                commodi, dolor recusandae temporibus culpa!
+                <strong>Preparacion:</strong> {recetaSelecionada.preparacion}
                 <br />
               </Card.Text>
             </Card.Body>
-          </Col>
-        </Row>
       </Card>
+
     </Container>
   );
 };
