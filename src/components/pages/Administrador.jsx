@@ -23,31 +23,31 @@ const Administrador = () => {
     }
   };
 
-   const mostrarComponente = spinnerAdimistrador ? (
+  const mostrarComponente = spinnerAdimistrador ? (
     <div className="my-4 text-center">
       <Spinner animation="border" variant="dark" />
     </div>
   ) : (
     <Table responsive striped bordered hover className="shadow">
-        <thead className="table-dark">
-          <tr className="text-center">
-            <th>Cod</th>
-            <th>Receta</th>
-            <th>URL de Imagen</th>
-            <th>Categoria</th>
-            <th>Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {recetas.map((receta) => (
-            <ItemReceta
-              key={receta.id}
-              receta={receta}
-              setRecetas={setRecetas}
-            ></ItemReceta>
-          ))}
-        </tbody>
-      </Table>
+      <thead className="table-dark">
+        <tr className="text-center">
+          <th>Cod</th>
+          <th>Receta</th>
+          <th>URL de Imagen</th>
+          <th>Categoria</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {recetas.map((receta) => (
+          <ItemReceta
+            key={receta.id}
+            receta={receta}
+            setRecetas={setRecetas}
+          ></ItemReceta>
+        ))}
+      </tbody>
+    </Table>
   );
 
   return (

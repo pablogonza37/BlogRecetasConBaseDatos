@@ -28,10 +28,10 @@ const Inicio = () => {
     </div>
   ) : (
     <Row>
-          {recetasInicio.map((recetas) => (
-            <CardReceta key={recetas.id} receta={recetas}></CardReceta>
-          ))}
-        </Row>
+      {recetasInicio.map((recetas) => (
+        <CardReceta key={recetas.id} receta={recetas}></CardReceta>
+      ))}
+    </Row>
   );
   return (
     <section className="mainSection">
@@ -48,7 +48,7 @@ const Inicio = () => {
       <Container className="mt-5">
         <h2 className="display-4 ">Nuestras Recetas</h2>
         <hr />
-       
+
         {mostrarComponente}
       </Container>
     </section>
