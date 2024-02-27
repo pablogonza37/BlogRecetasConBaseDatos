@@ -46,7 +46,6 @@ const FormularioReceta = ({ editar, titulo }) => {
 
   const recetaValidada = async (receta) => {
     if (editar) {
-      console.log("aqui tengo que editar");
       const respuesta = await editarRecetaAPI(receta, id);
       if (respuesta.status === 200) {
         Swal.fire({
