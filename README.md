@@ -8,7 +8,7 @@ Este repositorio contiene el código fuente de una página de blog de recetas de
 La página de blog de recetas es una aplicación web donde los usuarios pueden explorar una variedad de recetas culinarias, ver detalles de cada receta y también agregar nuevas recetas y eliminarlas. La aplicación simula la funcionalidad de una aplicación de blog real, con una interfaz de usuario intuitiva y atractiva.
 
 ## Demo
-Puedes ver una demostración del proyecto en vivo en [Netlify]().
+Puedes ver una demostración del proyecto en vivo en [Netlify](https://voluble-dodol-77f176.netlify.app/).
 
 ## Características
 
