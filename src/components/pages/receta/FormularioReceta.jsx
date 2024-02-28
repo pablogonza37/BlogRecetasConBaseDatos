@@ -163,9 +163,9 @@ const FormularioReceta = ({ editar, titulo }) => {
                   "Debe ingresar como minimo 5 caracteres para la descripcion",
               },
               maxLength: {
-                value: 1000,
+                value: 300,
                 message:
-                  "Debe ingresar como maximo 1000 caracteres para la descripcion",
+                  "Debe ingresar como maximo 300 caracteres para la descripcion",
               },
             })}
           />

@@ -43,7 +43,7 @@ const DetalleReceta = () => {
         </Col>
         <Col md={6} className="ps-md-0">
           <div className="d-flex justify-content-center row align-content-center m-0 w-100 h-100 text-bg-dark">
-            <p className="text-center col-auto text-warning">
+            <p className="text-center col-auto text-warning h4 my-4">
               Aprenda a realizar esta receta de "
               {recetaSelecionada.nombreReceta}", elaborada por nuestros chefs
             </p>
