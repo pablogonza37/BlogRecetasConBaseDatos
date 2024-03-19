@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
@@ -8,29 +8,25 @@ import {
   obtenerUsuarioAPI,
   editarUsuarioAPI,
 } from "../../../helpers/queries";
-import { useEffect } from "react";
 
-const FormularioRegistro = ({ editar, titulo, rol }) => {
+const FormularioRegistro = ({ editar, titulo }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-    getValues,
     setValue,
     reset,
   } = useForm();
   const navegacion = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [rolVisible, setRolVisible] = useState(editar);
-
   const { id } = useParams();
 
   useEffect(() => {
     if (editar) {
       cargarDatosUsuario();
     }
-  }, []);
+  }, [editar]);
 
   const cargarDatosUsuario = async () => {
     try {
@@ -40,49 +36,55 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
         setValue("nombre", usuarioEncontrado.nombre);
         setValue("email", usuarioEncontrado.email);
         setValue("rol", usuarioEncontrado.rol);
-        setValue("contraseña", usuarioEncontrado.contraseña);
-        setValue("ConfirmarContraseña", usuarioEncontrado.ConfirmarContraseña);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const usuarioValidado = async (usuarios) => {
+  const onSubmit = async (data) => {
+    const usuario = {
+      nombre: data.nombre,
+      email: data.email,
+      rol: data.rol,
+      contraseña: data.password,
+      confirmarContraseña: data.confirmarContraseña,
+    };
+
     if (editar) {
-      const respuesta = await editarUsuarioAPI(usuarios, id);
+      const respuesta = await editarUsuarioAPI(usuario, id);
       if (respuesta.status === 200) {
         Swal.fire({
           title: "Usuario modificado",
-          text: `El usuario "${usuarios.nombre}" fue modificado correctamente`,
+          text: `El usuario "${usuario.nombre}" fue modificado correctamente`,
           icon: "success",
         });
         navegacion("/administrador/usuarios");
       } else {
         Swal.fire({
-          title: "Ocurrio un error",
-          text: `El usuario "${usuarios.nombre}" no pudo ser modificado. Intente esta operación en unos minutos`,
+          title: "Ocurrió un error",
+          text: `El usuario "${usuario.nombre}" no pudo ser modificado. Intente esta operación en unos minutos`,
           icon: "error",
         });
       }
     } else {
-      const resp = await crearUsuarioAPI(usuarios);
-      if (resp.status === 201) {
+      const respuesta = await crearUsuarioAPI(usuario);
+      if (respuesta.status === 201) {
         setSubmitting(true);
         setTimeout(() => {
           setSubmitting(false);
         }, 2000);
         Swal.fire({
           title: "Usuario registrado",
-          text: `El usuario "${usuarios.nombre}" fue registrado correctamente`,
+          text: `El usuario "${usuario.nombre}" fue registrado correctamente`,
           icon: "success",
         });
         reset();
         navegacion("/");
       } else {
         Swal.fire({
-          title: "Ocurrio un error",
-          text: `El usuario "${usuarios.nombre}" no pudo ser registrado. Intente esta operación en unos minutos`,
+          title: "Ocurrió un error",
+          text: `El usuario "${usuario.nombre}" no pudo ser registrado. Intente esta operación en unos minutos`,
           icon: "error",
         });
       }
@@ -95,7 +97,7 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
     <section className="container mainSection">
       <Form
         className="my-4 rounded shadow p-3"
-        onSubmit={handleSubmit(usuarioValidado)}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <Form.Group className="mb-3" controlId="formNombre">
           <h1 className="display-4 mb-4">{titulo}</h1>
@@ -109,17 +111,17 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
               minLength: {
                 value: 2,
                 message:
-                  "Debe ingresar como minimo 2 caracteres para el nombre de usuario.",
+                  "Debe ingresar como mínimo 2 caracteres para el nombre de usuario.",
               },
               maxLength: {
                 value: 50,
                 message:
-                  "Debe ingresar como maximo 50 caracteres para el nombre de usuario.",
+                  "Debe ingresar como máximo 50 caracteres para el nombre de usuario.",
               },
             })}
           />
           <Form.Text className="text-danger">
-            {errors.nombre?.message}
+            {errors.nombre && errors.nombre.message}
           </Form.Text>
         </Form.Group>
 
@@ -136,26 +138,10 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
               },
             })}
           />
-          <Form.Text className="text-danger">{errors.email?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.email && errors.email.message}
+          </Form.Text>
         </Form.Group>
-
-        {rolVisible && (
-          <Form.Group className="mb-3" controlId="formcategoria">
-            <Form.Label>Rol*</Form.Label>
-            <Form.Select
-              {...register("rol", {
-                required: " es obligatorio",
-              })}
-            >
-              <option value="usuario">Seleccione una opcion</option>
-              <option value="usuario">Usuario</option>
-              <option value="administrador">Administrador</option>
-            </Form.Select>
-            <Form.Text className="text-danger">
-              {errors.rol?.message}
-            </Form.Text>
-          </Form.Group>
-        )}
 
         <Form.Group className="mb-3" controlId="formPassword">
           <Form.Label>Contraseña*</Form.Label>
@@ -171,7 +157,7 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
             })}
           />
           <Form.Text className="text-danger">
-            {errors.password?.message}
+            {errors.password && errors.password.message}
           </Form.Text>
         </Form.Group>
 
@@ -186,7 +172,8 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
             })}
           />
           <Form.Text className="text-danger">
-            {errors.confirmPassword?.message}
+            {errors.confirmarContraseña &&
+              errors.confirmarContraseña.message}
           </Form.Text>
         </Form.Group>
 
