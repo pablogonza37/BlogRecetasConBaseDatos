@@ -1,11 +1,12 @@
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
 import logo from "../../assets/logoRecetas.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
   const logout = () => {
-    sessionStorage.removeItem("usuarioRollingRecetas");
+    sessionStorage.removeItem("usuarioRollingrecetas");
     setUsuarioLogueado("");
     navegacion("/");
   };
@@ -22,13 +23,31 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
             <NavLink end className="nav-link" to="/">
               Inicio
             </NavLink>
-
             {usuarioLogueado !== "" ? (
               <>
-                <NavLink end className="nav-link" to="/administrador">
-                  Administrador
-                </NavLink>
-                <Button className="nav-link text-start" variant="link" onClick={logout}>
+                <Navbar.Toggle aria-controls="navbar-dark-example" />
+                <Navbar.Collapse id="navbar-dark-example">
+                  <Nav>
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="Administrador"
+                      menuVariant="dark"
+                      
+                    >
+                      <NavLink
+                        end
+                        className="nav-link text-white"
+                        to="/administrador/recetas"
+                      >
+                        Recetas
+                      </NavLink>
+                      <NavLink end className="nav-link text-white" to="/Administrador/usuarios">
+                        Usuarios
+                      </NavLink>
+                    </NavDropdown>
+                  </Nav>
+                </Navbar.Collapse>
+                <Button className="nav-link" variant="link" onClick={logout}>
                   logout
                 </Button>
               </>

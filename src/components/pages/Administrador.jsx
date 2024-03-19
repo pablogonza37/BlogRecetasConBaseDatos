@@ -1,12 +1,15 @@
 import { Table, Spinner } from "react-bootstrap";
 import ItemReceta from "./receta/ItemReceta";
+import ItemUsuario from "./usuarios/ItemUsuario";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { leerRecetasAPI } from "../../helpers/queries";
+import { leerRecetasAPI, leerUsuariosAPI } from "../../helpers/queries";
+import React from 'react';
 
-const Administrador = () => {
-  const [recetas, setRecetas] = useState([]);
-  const [spinnerAdimistrador, setSpinnerAdimistrador] = useState(true);
+const Administrador = ({ tipo }) => { 
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     consultarAPI();
@@ -14,16 +17,24 @@ const Administrador = () => {
 
   const consultarAPI = async () => {
     try {
-      setSpinnerAdimistrador(true);
-      const resp = await leerRecetasAPI();
-      setRecetas(resp);
-      setSpinnerAdimistrador(false);
+      setIsLoading(true);
+      let resp;
+      if (tipo === "usuarios") {
+        resp = await leerUsuariosAPI();
+      } else if (tipo === "recetas") {
+        resp = await leerRecetasAPI();
+      }
+      setData(resp);
+      setIsLoading(false);
+      setError(null);
     } catch (error) {
       console.log(error);
+      setError("Error al cargar los datos desde la API");
+      setIsLoading(false);
     }
   };
 
-  const mostrarComponente = spinnerAdimistrador ? (
+  const mostrarComponente = isLoading ? (
     <div className="my-4 text-center">
       <Spinner animation="border" variant="dark" />
     </div>
@@ -31,20 +42,22 @@ const Administrador = () => {
     <Table responsive striped bordered hover className="shadow">
       <thead className="table-dark">
         <tr className="text-center">
-          <th>Cod</th>
-          <th>Receta</th>
-          <th>URL de Imagen</th>
-          <th>Categoria</th>
+          <th>ID</th>
+          <th>{tipo === "usuarios" ? "Nombre" : "Receta"}</th>
+          <th>{tipo === "usuarios" ? "Email" : "URL de Imagen"}</th>
+          <th>{tipo === "usuarios" ? "Rol" : "Categoria"}</th>
           <th>Opciones</th>
         </tr>
       </thead>
       <tbody>
-        {recetas.map((receta) => (
-          <ItemReceta
-            key={receta.id}
-            receta={receta}
-            setRecetas={setRecetas}
-          ></ItemReceta>
+        {data.map((item) => (
+          <React.Fragment key={item.id}>
+            {tipo === "usuarios" ? (
+              <ItemUsuario usuario={item} setData={setData} />
+            ) : (
+              <ItemReceta receta={item} setData={setData} />
+            )}
+          </React.Fragment>
         ))}
       </tbody>
     </Table>
@@ -53,14 +66,19 @@ const Administrador = () => {
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <h1 className="display-4 ">Recetas disponibles</h1>
-
-        <Link className="btn btn-primary" to="/administrador/crear">
-          <i className="bi bi-file-earmark-plus"></i>
+        <h1 className="display-4">{`Gestión de ${tipo}`}</h1>
+        <Link className="btn btn-primary" to={`/administrador/${tipo}/crear`}>
+          <i className="bi bi-file-earmark-plus"></i> Crear {tipo === "usuarios" ? "Usuario" : "Receta"}
         </Link>
       </div>
       <hr />
       {mostrarComponente}
+      {error && <div className="alert alert-danger mt-3">{error}</div>}
+      {!error && data.length === 0 && (
+        <div className="alert alert-info mt-3 container text-danger">
+          No hay {tipo === "usuarios" ? "usuarios" : "recetas"}.
+        </div>
+      )}
     </section>
   );
 };

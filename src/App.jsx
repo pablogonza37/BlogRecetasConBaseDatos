@@ -30,6 +30,16 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Inicio></Inicio>}></Route>
           <Route
+  exact
+  path="/administrador/usuarios"
+  element={<Administrador tipo="usuarios" />}
+/>
+<Route
+  exact
+  path="/administrador/recetas"
+  element={<Administrador tipo="recetas" />}
+/>
+          <Route
             exact
             path="/administrador/*"
             element={
