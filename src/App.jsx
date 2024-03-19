@@ -56,7 +56,12 @@ function App() {
            <Route
             exact
             path="/administrador/usuarios/crear"
-            element={<FormularioRegistro></FormularioRegistro>}
+            element={<FormularioRegistro editar={false} titulo="Registro" rol='hidden'></FormularioRegistro>}
+          ></Route>
+           <Route
+            exact
+            path="/administrador/usuarios/editar/:id"
+            element={<FormularioRegistro editar={true} titulo="Editar Usuario" rol=''></FormularioRegistro>}
           ></Route>
           <Route
             exact

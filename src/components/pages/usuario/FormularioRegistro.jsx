@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { crearUsuarioAPI } from "../../../helpers/queries";
+import { useEffect } from "react";
 
-const FormularioRegistro = () => {
+const FormularioRegistro = ({ editar, titulo, rol }) => {
   const {
     register,
     handleSubmit,
@@ -16,6 +17,10 @@ const FormularioRegistro = () => {
   } = useForm();
   const navegacion = useNavigate();
   const [submitting, setSubmitting] = useState(false);
+
+  const { id } = useParams();
+
+  
 
   const usuarioValidado = async (usuarios)=>{
     const resp = await crearUsuarioAPI(usuarios);
@@ -50,7 +55,7 @@ const FormularioRegistro = () => {
         onSubmit={handleSubmit(usuarioValidado)}
       >
         <Form.Group className="mb-3" controlId="formNombre">
-        <h1 className="display-4 mb-4">Registro</h1>
+        <h1 className="display-4 mb-4">{titulo}</h1>
       <hr />
           <Form.Label>Nombre*</Form.Label>
           <Form.Control
@@ -93,7 +98,7 @@ const FormularioRegistro = () => {
 
 
         <Form.Group className="mb-3" controlId="formcategoria" hidden>
-          <Form.Label>Categoría*</Form.Label>
+          <Form.Label>Rol*</Form.Label>
           <Form.Select
             {...register("rol", {
               required: " es obligatorio",

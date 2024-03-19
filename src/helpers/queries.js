@@ -109,6 +109,22 @@ export const editarRecetaAPI = async (recetaModificada, id) => {
   }
 };
 
+export const editarUsuarioAPI = async (usuarioModificado, id) => {
+  try {
+    const respuesta = await fetch(`${URL_Usuarios}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarioModificado),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 const userAdmin = {
   mail: "admin@rollingrecetas.com",
   password: "prueba123",
