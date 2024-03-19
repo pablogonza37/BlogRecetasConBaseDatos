@@ -41,7 +41,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                       >
                         Recetas
                       </NavLink>
-                      <NavLink end className="nav-link text-white" to="/Administrador/usuarios">
+                      <NavLink end className="nav-link text-white" to="/administrador/usuarios">
                         Usuarios
                       </NavLink>
                     </NavDropdown>
@@ -53,7 +53,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
               </>
             ) : (
               <>
-                <NavLink end className="nav-link" to="/registro">
+                <NavLink end className="nav-link" to="/administrador/usuarios/crear">
                   Registro
                 </NavLink>
                 <NavLink end className="nav-link" to="/login">

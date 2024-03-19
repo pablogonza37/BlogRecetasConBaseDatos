@@ -33,6 +33,21 @@ export const obtenerRecetaAPI = async (id) => {
   }
 };
 
+export const crearUsuarioAPI = async (usuarioNuevo) => {
+  try {
+    const resp = await fetch(URL_Usuarios, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarioNuevo),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const crearRecetaAPI = async (recetaNueva) => {
   try {
     const resp = await fetch(URL_Recetas, {

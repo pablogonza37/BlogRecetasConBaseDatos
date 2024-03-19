@@ -55,7 +55,7 @@ function App() {
           ></Route>
            <Route
             exact
-            path="/registro"
+            path="/administrador/usuarios/crear"
             element={<FormularioRegistro></FormularioRegistro>}
           ></Route>
           <Route

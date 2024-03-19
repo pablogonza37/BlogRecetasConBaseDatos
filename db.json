@@ -97,6 +97,35 @@
       "email": "pab.pg02@gmail.com",
       "rol": "admin",
       "id": "209d"
+    },
+    {
+      "id": "be84",
+      "nombre": "holass",
+      "email": "pab.gonzalez3798@gmail.com",
+      "password": "1234567",
+      "confirmPassword": "1234567"
+    },
+    {
+      "id": "9f99",
+      "nombre": "tomas",
+      "email": "julian@gmail.com",
+      "password": "7654321",
+      "confirmPassword": "7654321"
+    },
+    {
+      "id": "6806",
+      "nombre": "joker",
+      "email": "julian@gmail.com",
+      "password": "654321",
+      "confirmPassword": "654321"
+    },
+    {
+      "id": "7f73",
+      "nombre": "holass",
+      "email": "pab.gonzalez3798@gmail.com",
+      "rol": "usuario",
+      "password": "765432",
+      "confirmPassword": "765432"
     }
   ]
 }

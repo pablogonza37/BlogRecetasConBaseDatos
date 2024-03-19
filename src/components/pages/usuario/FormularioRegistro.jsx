@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { crearUsuarioAPI } from "../../../helpers/queries";
 
 const FormularioRegistro = () => {
   const {
@@ -8,19 +11,34 @@ const FormularioRegistro = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    getValues,
     reset,
   } = useForm();
+  const navegacion = useNavigate();
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data); 
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 2000);
-    reset();
-    console.log('usuario registrado')
-  };
+  const usuarioValidado = async (usuarios)=>{
+    const resp = await crearUsuarioAPI(usuarios);
+    if (resp.status === 201) {
+      setSubmitting(true);
+      setTimeout(() => {
+        setSubmitting(false);
+      }, 2000);
+      Swal.fire({
+        title: "Usuario registrado",
+        text: `El usuario "${usuarios.nombre}" fue registrado correctamente`,
+        icon: "success",
+      });
+      reset();
+      navegacion('/');
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: `El usuario "${usuarios.nombre}" no pudo ser registrado. Intente esta operación en unos minutos`,
+        icon: "error",
+      });
+    }
+  }
 
   const password = watch("password", "");
 
@@ -29,7 +47,7 @@ const FormularioRegistro = () => {
      
       <Form
         className="my-4 rounded shadow p-3"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(usuarioValidado)}
       >
         <Form.Group className="mb-3" controlId="formNombre">
         <h1 className="display-4 mb-4">Registro</h1>
@@ -71,6 +89,23 @@ const FormularioRegistro = () => {
             })}
           />
           <Form.Text className="text-danger">{errors.email?.message}</Form.Text>
+        </Form.Group>
+
+
+        <Form.Group className="mb-3" controlId="formcategoria" hidden>
+          <Form.Label>Categoría*</Form.Label>
+          <Form.Select
+            {...register("rol", {
+              required: " es obligatorio",
+            })}
+          >
+            <option value="usuario">Seleccione una opcion</option>
+            <option value="usuario">Usuario</option>
+            <option value="administrador">Administrador</option>
+          </Form.Select>
+          <Form.Text className="text-danger">
+            {errors.categoria?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPassword">
