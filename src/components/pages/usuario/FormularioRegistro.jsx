@@ -3,7 +3,11 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { crearUsuarioAPI, obtenerUsuarioAPI } from "../../../helpers/queries";
+import {
+  crearUsuarioAPI,
+  obtenerUsuarioAPI,
+  editarUsuarioAPI,
+} from "../../../helpers/queries";
 import { useEffect } from "react";
 
 const FormularioRegistro = ({ editar, titulo, rol }) => {
@@ -18,6 +22,7 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
   } = useForm();
   const navegacion = useNavigate();
   const [submitting, setSubmitting] = useState(false);
+  const [rolVisible, setRolVisible] = useState(editar);
 
   const { id } = useParams();
 
@@ -43,41 +48,58 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
     }
   };
 
-  const usuarioValidado = async (usuarios)=>{
-    const resp = await crearUsuarioAPI(usuarios);
-    if (resp.status === 201) {
-      setSubmitting(true);
-      setTimeout(() => {
-        setSubmitting(false);
-      }, 2000);
-      Swal.fire({
-        title: "Usuario registrado",
-        text: `El usuario "${usuarios.nombre}" fue registrado correctamente`,
-        icon: "success",
-      });
-      reset();
-      navegacion('/');
+  const usuarioValidado = async (usuarios) => {
+    if (editar) {
+      const respuesta = await editarUsuarioAPI(usuarios, id);
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Usuario modificado",
+          text: `El usuario "${usuarios.nombre}" fue modificado correctamente`,
+          icon: "success",
+        });
+        navegacion("/administrador/usuarios");
+      } else {
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `El usuario "${usuarios.nombre}" no pudo ser modificado. Intente esta operación en unos minutos`,
+          icon: "error",
+        });
+      }
     } else {
-      Swal.fire({
-        title: "Ocurrio un error",
-        text: `El usuario "${usuarios.nombre}" no pudo ser registrado. Intente esta operación en unos minutos`,
-        icon: "error",
-      });
+      const resp = await crearUsuarioAPI(usuarios);
+      if (resp.status === 201) {
+        setSubmitting(true);
+        setTimeout(() => {
+          setSubmitting(false);
+        }, 2000);
+        Swal.fire({
+          title: "Usuario registrado",
+          text: `El usuario "${usuarios.nombre}" fue registrado correctamente`,
+          icon: "success",
+        });
+        reset();
+        navegacion("/");
+      } else {
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `El usuario "${usuarios.nombre}" no pudo ser registrado. Intente esta operación en unos minutos`,
+          icon: "error",
+        });
+      }
     }
-  }
+  };
 
   const password = watch("password", "");
 
   return (
     <section className="container mainSection">
-     
       <Form
         className="my-4 rounded shadow p-3"
         onSubmit={handleSubmit(usuarioValidado)}
       >
         <Form.Group className="mb-3" controlId="formNombre">
-        <h1 className="display-4 mb-4">{titulo}</h1>
-      <hr />
+          <h1 className="display-4 mb-4">{titulo}</h1>
+          <hr />
           <Form.Label>Nombre*</Form.Label>
           <Form.Control
             type="text"
@@ -117,22 +139,23 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
           <Form.Text className="text-danger">{errors.email?.message}</Form.Text>
         </Form.Group>
 
-
-        <Form.Group className="mb-3" controlId="formcategoria" hidden>
-          <Form.Label>Rol*</Form.Label>
-          <Form.Select
-            {...register("rol", {
-              required: " es obligatorio",
-            })}
-          >
-            <option value="usuario">Seleccione una opcion</option>
-            <option value="usuario">Usuario</option>
-            <option value="administrador">Administrador</option>
-          </Form.Select>
-          <Form.Text className="text-danger">
-            {errors.categoria?.message}
-          </Form.Text>
-        </Form.Group>
+        {rolVisible && (
+          <Form.Group className="mb-3" controlId="formcategoria">
+            <Form.Label>Rol*</Form.Label>
+            <Form.Select
+              {...register("rol", {
+                required: " es obligatorio",
+              })}
+            >
+              <option value="usuario">Seleccione una opcion</option>
+              <option value="usuario">Usuario</option>
+              <option value="administrador">Administrador</option>
+            </Form.Select>
+            <Form.Text className="text-danger">
+              {errors.rol?.message}
+            </Form.Text>
+          </Form.Group>
+        )}
 
         <Form.Group className="mb-3" controlId="formPassword">
           <Form.Label>Contraseña*</Form.Label>

@@ -46,7 +46,7 @@ const ItemUsuario = ({ usuario, setData}) => {
       <td>{usuario.rol}</td>
       <td className="text-center">
         <Link
-          className="btn btn-warning me-lg-2"
+          className="btn btn-warning me-1"
           to={`/administrador/usuarios/editar/${usuario.id}`}
         >
           <i className="bi bi-pencil-square"></i>

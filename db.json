@@ -93,12 +93,12 @@
   ],
   "usuarios": [
     {
-      "id": "9e47",
-      "nombre": "holass",
+      "nombre": "Pablo",
       "email": "pab.gonzalez3798@gmail.com",
-      "rol": "usuario",
+      "rol": "administrador",
       "password": "1234567",
-      "confirmPassword": "1234567"
+      "confirmarContraseña": "1234567",
+      "id": "9e47"
     }
   ]
 }
