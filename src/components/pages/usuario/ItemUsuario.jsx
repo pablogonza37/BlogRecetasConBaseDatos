@@ -40,7 +40,6 @@ const ItemUsuario = ({ usuario, setData}) => {
 
   return (
     <tr>
-      <td className="text-center">{usuario._id}</td>
       <td>{usuario.nombre}</td>
       <td>{usuario.email}</td>
       <td>{usuario.rol}</td>

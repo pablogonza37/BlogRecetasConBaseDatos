@@ -42,7 +42,6 @@ const Administrador = ({ tipo }) => {
     <Table responsive striped bordered hover className="shadow">
       <thead className="table-dark">
         <tr className="text-center">
-          <th>ID</th>
           <th>{tipo === "usuarios" ? "Nombre" : "Receta"}</th>
           <th>{tipo === "usuarios" ? "Email" : "URL de Imagen"}</th>
           <th>{tipo === "usuarios" ? "Rol" : "Categoria"}</th>

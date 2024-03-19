@@ -39,7 +39,6 @@ const ItemReceta = ({ receta, setData }) => {
 
   return (
     <tr>
-      <td className="text-center">{receta._id}</td>
       <td>{receta.nombreReceta}</td>
       <td className="text-center">
         <img

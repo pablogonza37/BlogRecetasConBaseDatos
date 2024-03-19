@@ -99,6 +99,13 @@
       "password": "1234567",
       "confirmarContraseña": "1234567",
       "id": "9e47"
+    },
+    {
+      "id": "8044",
+      "nombre": "holass",
+      "email": "pab.gonzalez3798@gmail.com",
+      "contraseña": "123456",
+      "confirmarContraseña": "123456"
     }
   ]
 }

@@ -20,6 +20,7 @@ const FormularioRegistro = ({ editar, titulo }) => {
   } = useForm();
   const navegacion = useNavigate();
   const [submitting, setSubmitting] = useState(false);
+  const [rolVisible, setRolVisible] = useState(editar);
   const { id } = useParams();
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const FormularioRegistro = ({ editar, titulo }) => {
       nombre: data.nombre,
       email: data.email,
       rol: data.rol,
-      contraseña: data.password,
+      password: data.password,
       confirmarContraseña: data.confirmarContraseña,
     };
 
@@ -142,6 +143,23 @@ const FormularioRegistro = ({ editar, titulo }) => {
             {errors.email && errors.email.message}
           </Form.Text>
         </Form.Group>
+
+        {rolVisible && (
+          <Form.Group className="mb-3" controlId="formcategoria">
+            <Form.Label>Rol*</Form.Label>
+            <Form.Select
+              {...register("rol", {
+                required: " es obligatorio",
+              })}
+            >
+              <option value="usuario">Usuario</option>
+              <option value="administrador">Administrador</option>
+            </Form.Select>
+            <Form.Text className="text-danger">
+              {errors.rol?.message}
+            </Form.Text>
+          </Form.Group>
+        )}
 
         <Form.Group className="mb-3" controlId="formPassword">
           <Form.Label>Contraseña*</Form.Label>
