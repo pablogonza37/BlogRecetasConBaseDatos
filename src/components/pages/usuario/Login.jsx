@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { login } from "../../../helpers/queries";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; 
 
 const Login = ({setUsuarioLogueado}) => {
   const {
@@ -32,8 +33,8 @@ const Login = ({setUsuarioLogueado}) => {
 
   return (
     <Container className="mainSection my-5">
-      <Card>
-        <Card.Header className="h4">Login</Card.Header>
+      <Card className='rounded shadow'>
+        <Card.Header className="display-4 mb-4">Login</Card.Header>
         <Card.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -72,10 +73,11 @@ const Login = ({setUsuarioLogueado}) => {
                 </Form.Text>
               </Col>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
               Ingresar
             </Button>
           </Form>
+          <p className="mt-3">¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link></p>
         </Card.Body>
       </Card>
     </Container>

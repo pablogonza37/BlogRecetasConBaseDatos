@@ -10,6 +10,7 @@ import Error404 from "./components/pages/Error404";
 import DetalleReceta from "./components/pages/DetalleReceta";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FormularioRegistro from "./components/pages/usuario/FormularioRegistro";
+import Login from "./components/pages/usuario/Login";
 
 function App() {
   return (
@@ -52,6 +53,11 @@ function App() {
             exact
             path="/registro"
             element={<FormularioRegistro></FormularioRegistro>}
+          ></Route>
+          <Route
+            exact
+            path="/login"
+            element={<Login></Login>}
           ></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>

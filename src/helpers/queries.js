@@ -59,3 +59,23 @@ export const editarRecetaAPI = async (recetaModificada, id) => {
     console.log(error);
   }
 };
+
+const userAdmin = {
+  mail: "admin@rollingrecetas.com",
+  password: "prueba123",
+};
+
+export const login = (usuario) => {
+  if (
+    usuario.mail === userAdmin.mail &&
+    usuario.password === userAdmin.password
+  ) {
+    sessionStorage.setItem(
+      "usuarioRollingRecetas",
+      JSON.stringify(usuario.mail)
+    );
+    return true;
+  }else {
+    return false;
+  }
+};
