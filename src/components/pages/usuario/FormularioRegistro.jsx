@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { crearUsuarioAPI } from "../../../helpers/queries";
+import { crearUsuarioAPI, obtenerUsuarioAPI } from "../../../helpers/queries";
 import { useEffect } from "react";
 
 const FormularioRegistro = ({ editar, titulo, rol }) => {
@@ -13,6 +13,7 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
     formState: { errors },
     watch,
     getValues,
+    setValue,
     reset,
   } = useForm();
   const navegacion = useNavigate();
@@ -20,7 +21,27 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
 
   const { id } = useParams();
 
-  
+  useEffect(() => {
+    if (editar) {
+      cargarDatosUsuario();
+    }
+  }, []);
+
+  const cargarDatosUsuario = async () => {
+    try {
+      const respuesta = await obtenerUsuarioAPI(id);
+      if (respuesta.status === 200) {
+        const usuarioEncontrado = await respuesta.json();
+        setValue("nombre", usuarioEncontrado.nombre);
+        setValue("email", usuarioEncontrado.email);
+        setValue("rol", usuarioEncontrado.rol);
+        setValue("contraseña", usuarioEncontrado.contraseña);
+        setValue("ConfirmarContraseña", usuarioEncontrado.ConfirmarContraseña);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const usuarioValidado = async (usuarios)=>{
     const resp = await crearUsuarioAPI(usuarios);
@@ -136,7 +157,7 @@ const FormularioRegistro = ({ editar, titulo, rol }) => {
           <Form.Control
             type="password"
             placeholder="Confirmar Contraseña"
-            {...register("confirmPassword", {
+            {...register("confirmarContraseña", {
               validate: (value) =>
                 value === password || "Las contraseñas no coinciden",
             })}
