@@ -20,7 +20,7 @@ const Login = ({setUsuarioLogueado}) => {
         text: `Bienvenido "${usuario.mail}"`,
         icon: "success",
       });
-      navegacion('/administrador');
+      navegacion('/administrador/recetas');
       setUsuarioLogueado(usuario.mail);
     } else {
       Swal.fire({

@@ -25,8 +25,8 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
             </NavLink>
             {usuarioLogueado !== "" ? (
               <>
-                <Navbar.Toggle aria-controls="navbar-dark-example" />
-                <Navbar.Collapse id="navbar-dark-example">
+               
+                <Navbar.Collapse id="navbar-dark-example" >
                   <Nav>
                     <NavDropdown
                       id="nav-dropdown-dark-example"
@@ -47,7 +47,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                     </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>
-                <Button className="nav-link" variant="link" onClick={logout}>
+                <Button className="nav-link text-start" variant="link" onClick={logout}>
                   logout
                 </Button>
               </>

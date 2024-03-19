@@ -1,15 +1,6 @@
 {
   "recetas": [
     {
-      "nombreReceta": "Lasagna de carne",
-      "imagen": "https://images.pexels.com/photos/4079520/pexels-photo-4079520.jpeg",
-      "categoria": "Plato principal",
-      "descripcion": "La lasaña de carne es un delicioso plato de origen italiano que consiste en capas alternas de láminas de pasta.",
-      "ingredientes": "12 láminas de pasta para lasaña 500g de carne molida de res, 1 cebolla grande, picada 4 dientes de ajo, picados 800g de tomate triturado (puede ser enlatado) 2 cucharadas de pasta de tomate 2 cucharaditas de azúcar 1 cucharadita de orégano seco 1 cucharadita de albahaca seca Sal y pimienta al gusto 500g de queso ricotta 1 huevo 1/2 taza de queso parmesano rallado 2 tazas de queso mozzarella rallado Aceite de oliva",
-      "preparacion": "1. Precalienta el horno a 180°C (350°F).\n\n2. En una sartén grande, calienta un poco de aceite de oliva a fuego medio. Agrega la cebolla y el ajo, y cocina hasta que estén dorados y fragantes, unos 5 minutos.\n\n3. Añade la carne molida a la sartén y cocina hasta que esté bien dorada y cocida. Agrega el tomate triturado, la pasta de tomate, el azúcar, el orégano, la albahaca, la sal y la pimienta. Cocina a fuego lento durante unos 20 minutos, revolviendo ocasionalmente, para que los sabores se mezclen bien.\n\n4. Mientras tanto, en un tazón mediano, mezcla el queso ricotta con el huevo y el queso parmesano rallado.\n\n5. En una fuente para hornear, extiende una capa delgada de la mezcla de carne en el fondo. Coloca una capa de láminas de pasta sobre la carne. Luego, agrega una capa de la mezcla de queso ricotta. Repite las capas, terminando con una capa de salsa de carne encima.\n\n6. Espolvorea el queso mozzarella rallado sobre la capa superior.\n\n7. Cubre la fuente para hornear con papel de aluminio y hornea en el horno precalentado durante 25 minutos.\n\n8. Retira el papel de aluminio y hornea por otros 25 minutos o hasta que el queso esté dorado y burbujeante.\n\n9. Deja reposar la lasaña durante unos 10-15 minutos antes de servir. Esto ayudará a que se asiente un poco y sea más fácil de cortar.",
-      "id": "8249"
-    },
-    {
       "nombreReceta": "Pollo al Curry",
       "imagen": "https://images.pexels.com/photos/9218754/pexels-photo-9218754.jpeg",
       "categoria": "Entrada",
@@ -19,16 +10,7 @@
       "id": "2797"
     },
     {
-      "nombreReceta": "Ensalada Caprese",
-      "imagen": "https://images.pexels.com/photos/13241736/pexels-photo-13241736.jpeg",
-      "categoria": "Ensalada",
-      "descripcion": "Una ensalada italiana fresca y sencilla que combina tomate maduro, mozzarella de búfala y albahaca.",
-      "ingredientes": "Tomates maduros: 3 unidades,\nMozzarella de búfala: 250g,\nHojas de albahaca fresca: un manojo,\nAceite de oliva virgen extra: 2 cucharadas,\nVinagre balsámico: 1 cucharada,\nSal y pimienta al gusto",
-      "preparacion": "1. Corta los tomates y la mozzarella en rodajas.\n2. Alterna las rodajas de tomate con las de mozzarella en un plato.\n3. Coloca las hojas de albahaca encima.\n4. Aliña con aceite de oliva, vinagre balsámico, sal y pimienta.",
-      "id": "57f7"
-    },
-    {
-      "nombreReceta": "Sopa de Verduras",
+      "nombreReceta": "Sopa ",
       "imagen": "https://images.pexels.com/photos/1731535/pexels-photo-1731535.jpeg",
       "categoria": "Sopas y cremas",
       "descripcion": "Reconfortante y saludable, esta sopa está llena de vegetales frescos y es perfecta para cualquier temporada.",
@@ -107,6 +89,14 @@
       "ingredientes": "Queso feta: 200g,\nTomates cherry: 1 taza,\nAceite de oliva virgen extra: 2 cucharadas,\nAjo: 2 dientes (picados),\nHierbas frescas (romero, tomillo, orégano): un manojo,\nPimienta negra molida: al gusto",
       "preparacion": "1- Precalienta el horno a 180°C.\n2- Coloca el queso feta en un plato para horno. Distribuye los tomates cherry alrededor del queso.\n3- Espolvorea el ajo picado y las hierbas frescas sobre el queso y los tomates. Rocía con aceite de oliva y sazona con pimienta negra molida.\n4- Hornea durante 15-20 minutos o hasta que el queso esté ligeramente dorado y los tomates se hayan ablandado.\n5- Sirve caliente con pan crujiente o galletas saladas.",
       "id": "e268"
+    }
+  ],
+  "usuarios": [
+    {
+      "nombre": "pablo",
+      "email": "pab.pg02@gmail.com",
+      "rol": "admin",
+      "id": "209d"
     }
   ]
 }

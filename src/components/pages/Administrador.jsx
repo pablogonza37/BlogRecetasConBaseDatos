@@ -1,6 +1,6 @@
 import { Table, Spinner } from "react-bootstrap";
 import ItemReceta from "./receta/ItemReceta";
-import ItemUsuario from "./usuarios/ItemUsuario";
+import ItemUsuario from "./usuario/ItemUsuario";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { leerRecetasAPI, leerUsuariosAPI } from "../../helpers/queries";

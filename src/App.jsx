@@ -18,7 +18,7 @@ import { useState } from "react";
 function App() {
   const usuario =
     JSON.parse(sessionStorage.getItem("usuarioRollingRecetas")) || "";
-  const [usuarioLogueado, setUsuarioLogueado] = useState('');
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
 
   return (
     <>

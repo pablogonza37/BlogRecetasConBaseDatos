@@ -13,7 +13,7 @@ const RutasAdmin = () => {
         ></Route>
         <Route
           exact
-          path="/crear"
+          path="recetas/crear"
           element={
             <FormularioReceta
               editar={false}
@@ -23,7 +23,7 @@ const RutasAdmin = () => {
         ></Route>
         <Route
           exact
-          path="/editar/:id"
+          path="recetas/editar/:id"
           element={
             <FormularioReceta
               editar={true}
