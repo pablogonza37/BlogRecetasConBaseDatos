@@ -1,11 +1,11 @@
-import { Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Container, Button } from "react-bootstrap";
 import logo from "../../assets/logoRecetas.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
   const logout = () => {
-    sessionStorage.removeItem("usuarioRollingrecetas");
+    sessionStorage.removeItem("usuarioRollingRecetas");
     setUsuarioLogueado("");
     navegacion("/");
   };
@@ -28,7 +28,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                 <NavLink end className="nav-link" to="/administrador">
                   Administrador
                 </NavLink>
-                <Button className="nav-link" variant="link" onClick={logout}>
+                <Button className="nav-link text-start" variant="link" onClick={logout}>
                   logout
                 </Button>
               </>

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router";
 import Administrador from "../pages/Administrador";
-import FormularioReceta from "../pages/producto/FormularioReceta";
+import FormularioReceta from "../pages/receta/FormularioReceta";
 
 const RutasAdmin = () => {
   return (

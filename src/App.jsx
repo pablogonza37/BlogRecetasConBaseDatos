@@ -11,37 +11,31 @@ import DetalleReceta from "./components/pages/DetalleReceta";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FormularioRegistro from "./components/pages/usuario/FormularioRegistro";
 import Login from "./components/pages/usuario/Login";
+import RutasProtegidas from "./components/routes/RutasProtegidas";
+import RutasAdmin from "./components/routes/RutasAdmin";
+import { useState } from "react";
 
 function App() {
+  const usuario =
+    JSON.parse(sessionStorage.getItem("usuarioRollingRecetas")) || "";
+  const [usuarioLogueado, setUsuarioLogueado] = useState('');
+
   return (
     <>
       <BrowserRouter>
-        <Menu></Menu>
+        <Menu
+          usuarioLogueado={usuarioLogueado}
+          setUsuarioLogueado={setUsuarioLogueado}
+        ></Menu>
         <Routes>
           <Route exact path="/" element={<Inicio></Inicio>}></Route>
           <Route
             exact
-            path="/administrador"
-            element={<Administrador></Administrador>}
-          ></Route>
-          <Route
-            exact
-            path="/administrador/crear"
+            path="/administrador/*"
             element={
-              <FormularioReceta
-                editar={false}
-                titulo="Nueva receta"
-              ></FormularioReceta>
-            }
-          ></Route>
-          <Route
-            exact
-            path="/administrador/editar/:id"
-            element={
-              <FormularioReceta
-                editar={true}
-                titulo="Editar receta"
-              ></FormularioReceta>
+              <RutasProtegidas>
+                <RutasAdmin></RutasAdmin>
+              </RutasProtegidas>
             }
           ></Route>
           <Route
@@ -57,7 +51,7 @@ function App() {
           <Route
             exact
             path="/login"
-            element={<Login></Login>}
+            element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
           ></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>
