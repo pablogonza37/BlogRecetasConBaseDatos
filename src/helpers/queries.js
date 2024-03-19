@@ -24,6 +24,15 @@ export const leerUsuariosAPI = async () => {
   }
 };
 
+export const obtenerUsuarioAPI = async (id) => {
+  try {
+    const resp = await fetch(URL_Usuarios + "/" + id);
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const obtenerRecetaAPI = async (id) => {
   try {
     const resp = await fetch(URL_Recetas + "/" + id);
@@ -56,6 +65,17 @@ export const crearRecetaAPI = async (recetaNueva) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(recetaNueva),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const borrarUsuarioAPI = async (id) => {
+  try {
+    const resp = await fetch(`${URL_Usuarios}/${id}`, {
+      method: "DELETE",
     });
     return resp;
   } catch (error) {

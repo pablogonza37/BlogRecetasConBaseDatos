@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { borrarRecetaAPI, leerRecetasAPI } from "../../../helpers/queries";
+import { borrarUsuarioAPI, leerUsuariosAPI } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -43,7 +43,7 @@ const ItemUsuario = ({ usuario, setData}) => {
       <td className="text-center">{usuario.id}</td>
       <td>{usuario.nombre}</td>
       <td>{usuario.email}</td>
-      <td>usuario estandar</td>
+      <td>{usuario.rol}</td>
       <td className="text-center">
         <Link
           className="btn btn-warning me-lg-2"
