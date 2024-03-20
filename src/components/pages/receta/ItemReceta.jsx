@@ -50,7 +50,7 @@ const ItemReceta = ({ receta, setData }) => {
       <td>{receta.categoria}</td>
       <td className="text-center">
         <Link
-          className="btn btn-warning me-lg-2"
+          className="btn btn-warning me-1"
           to={"/administrador/recetas/editar/" + receta._id}
         >
           <i className="bi bi-pencil-square"></i>

@@ -25,35 +25,45 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
             </NavLink>
             {usuarioLogueado !== "" ? (
               <>
-               
-                <Navbar.Collapse id="navbar-dark-example" >
+                <Navbar.Collapse id="navbar-dark-example">
                   <Nav>
                     <NavDropdown
                       id="nav-dropdown-dark-example"
                       title="Administrador"
                       menuVariant="dark"
-                      
                     >
                       <NavLink
                         end
-                        className="nav-link text-white"
+                        className="nav-link text-white "
                         to="/administrador/recetas"
                       >
                         Recetas
                       </NavLink>
-                      <NavLink end className="nav-link text-white" to="/administrador/usuarios">
+                      <NavLink
+                        end
+                        className="nav-link text-white"
+                        to="/administrador/usuarios"
+                      >
                         Usuarios
                       </NavLink>
                     </NavDropdown>
                   </Nav>
                 </Navbar.Collapse>
-                <Button className="nav-link text-start" variant="link" onClick={logout}>
+                <Button
+                  className="nav-link text-start"
+                  variant="link"
+                  onClick={logout}
+                >
                   logout
                 </Button>
               </>
             ) : (
               <>
-                <NavLink end className="nav-link" to="/administrador/usuarios/crear">
+                <NavLink
+                  end
+                  className="nav-link"
+                  to="/administrador/usuarios/crear"
+                >
                   Registro
                 </NavLink>
                 <NavLink end className="nav-link" to="/login">

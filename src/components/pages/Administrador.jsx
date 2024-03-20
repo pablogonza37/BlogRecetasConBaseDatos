@@ -13,7 +13,7 @@ const Administrador = ({ tipo }) => {
 
   useEffect(() => {
     consultarAPI();
-  }, []);
+  }, [tipo]);
 
   const consultarAPI = async () => {
     try {
