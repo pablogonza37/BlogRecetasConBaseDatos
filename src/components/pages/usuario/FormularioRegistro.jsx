@@ -9,7 +9,7 @@ import {
   editarUsuarioAPI,
 } from "../../../helpers/queries";
 
-const FormularioRegistro = ({ editar, titulo }) => {
+const FormularioRegistro = ({ editar, titulo, usuarioLogueado }) => {
   const {
     register,
     handleSubmit,
@@ -22,6 +22,7 @@ const FormularioRegistro = ({ editar, titulo }) => {
   const [submitting, setSubmitting] = useState(false);
   const [rolVisible, setRolVisible] = useState(editar);
   const { id } = useParams();
+  const [rolPorDefecto, setRolPorDefecto] = useState("usuario");
 
   useEffect(() => {
     if (editar) {
@@ -47,7 +48,7 @@ const FormularioRegistro = ({ editar, titulo }) => {
     const usuario = {
       nombre: data.nombre,
       email: data.email,
-      rol: data.rol,
+      rol: data.rol || rolPorDefecto,
       password: data.password,
       confirmarContraseña: data.confirmarContraseña,
     };
@@ -81,7 +82,11 @@ const FormularioRegistro = ({ editar, titulo }) => {
           icon: "success",
         });
         reset();
-        navegacion("/");
+        if(usuarioLogueado === ''){
+          navegacion('/');
+        }
+    
+        
       } else {
         Swal.fire({
           title: "Ocurrió un error",
