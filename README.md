@@ -1,7 +1,7 @@
 
 # Blog de Recetas (React)
 
-Este repositorio contiene el código fuente de una página de blog de recetas desarrollada con React, utilizando JSON-Server como una API falsa. Además, se han empleado React Hook Form y React Router DOM para facilitar el manejo de formularios y la navegación dentro de la aplicación.
+Este repositorio contiene el código fuente de una página de blog de recetas desarrollada con React. Además, se han empleado React Hook Form y React Router DOM para facilitar el manejo de formularios y la navegación dentro de la aplicación.
 
 ## Descripción
 
