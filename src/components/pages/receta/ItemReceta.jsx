@@ -3,7 +3,7 @@ import { borrarRecetaAPI, leerRecetasAPI } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-const ItemReceta = ({ receta, setRecetas }) => {
+const ItemReceta = ({ receta, setData }) => {
   const borrarReceta = () => {
     Swal.fire({
       title: "¿Estas seguro de eliminar la receta?",
@@ -16,7 +16,7 @@ const ItemReceta = ({ receta, setRecetas }) => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const respuesta = await borrarRecetaAPI(receta.id);
+        const respuesta = await borrarRecetaAPI(receta._id);
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Receta eliminada",
@@ -25,7 +25,7 @@ const ItemReceta = ({ receta, setRecetas }) => {
           });
 
           const listaRecetas = await leerRecetasAPI();
-          setRecetas(listaRecetas);
+          setData(listaRecetas);
         } else {
           Swal.fire({
             title: "Ocurrio un error",
@@ -39,7 +39,6 @@ const ItemReceta = ({ receta, setRecetas }) => {
 
   return (
     <tr>
-      <td className="text-center">{receta.id}</td>
       <td>{receta.nombreReceta}</td>
       <td className="text-center">
         <img
@@ -51,8 +50,8 @@ const ItemReceta = ({ receta, setRecetas }) => {
       <td>{receta.categoria}</td>
       <td className="text-center">
         <Link
-          className="btn btn-warning me-lg-2"
-          to={"/administrador/editar/" + receta.id}
+          className="btn btn-warning me-1"
+          to={"/administrador/recetas/editar/" + receta._id}
         >
           <i className="bi bi-pencil-square"></i>
         </Link>

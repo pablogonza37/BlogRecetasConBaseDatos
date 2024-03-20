@@ -53,7 +53,7 @@ const FormularioReceta = ({ editar, titulo }) => {
           text: `El producto "${receta.nombreReceta}" fue modificado correctamente`,
           icon: "success",
         });
-        navegacion("/administrador");
+        navegacion("/administrador/recetas");
       } else {
         Swal.fire({
           title: "Ocurrio un error",

@@ -1,10 +1,33 @@
 const URL_Recetas = import.meta.env.VITE_API_RECETAS;
+const URL_Usuarios = import.meta.env.VITE_API_USUARIOS;
 
 export const leerRecetasAPI = async () => {
   try {
     const resp = await fetch(URL_Recetas);
     const listaRecetas = await resp.json();
     return listaRecetas;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const leerUsuariosAPI = async () => {
+  try {
+    const resp = await fetch(URL_Usuarios);
+    if (!resp.ok) {
+      throw new Error('No se pudo cargar la lista de usuarios');
+    }
+    const listaUsuarios = await resp.json();
+    return listaUsuarios;
+  } catch (error) {
+    throw new Error('Error al cargar los usuarios desde la API: ' + error.message);
+  }
+};
+
+export const obtenerUsuarioAPI = async (id) => {
+  try {
+    const resp = await fetch(URL_Usuarios + "/" + id);
+    return resp;
   } catch (error) {
     console.log(error);
   }
@@ -19,6 +42,21 @@ export const obtenerRecetaAPI = async (id) => {
   }
 };
 
+export const crearUsuarioAPI = async (usuarioNuevo) => {
+  try {
+    const resp = await fetch(URL_Usuarios, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarioNuevo),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const crearRecetaAPI = async (recetaNueva) => {
   try {
     const resp = await fetch(URL_Recetas, {
@@ -27,6 +65,17 @@ export const crearRecetaAPI = async (recetaNueva) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(recetaNueva),
+    });
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const borrarUsuarioAPI = async (id) => {
+  try {
+    const resp = await fetch(`${URL_Usuarios}/${id}`, {
+      method: "DELETE",
     });
     return resp;
   } catch (error) {
@@ -57,5 +106,41 @@ export const editarRecetaAPI = async (recetaModificada, id) => {
     return respuesta;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const editarUsuarioAPI = async (usuarioModificado, id) => {
+  try {
+    const respuesta = await fetch(`${URL_Usuarios}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarioModificado),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+const userAdmin = {
+  mail: "admin@rollingrecetas.com",
+  password: "prueba123",
+};
+
+export const login = (usuario) => {
+  if (
+    usuario.mail === userAdmin.mail &&
+    usuario.password === userAdmin.password
+  ) {
+    sessionStorage.setItem(
+      "usuarioRollingRecetas",
+      JSON.stringify(usuario.mail)
+    );
+    return true;
+  }else {
+    return false;
   }
 };
