@@ -77,7 +77,7 @@ const Login = ({setUsuarioLogueado}) => {
               Ingresar
             </Button>
           </Form>
-          <p className="mt-3">¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link></p>
+          <p className="mt-3">¿No tienes una cuenta? <Link to="/administrador/usuarios/crear">Regístrate aquí</Link></p>
         </Card.Body>
       </Card>
     </Container>
