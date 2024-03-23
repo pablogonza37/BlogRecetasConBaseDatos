@@ -47,6 +47,7 @@ function App() {
             element={
               <FormularioRegistro
                 editar={false}
+                rol={false}
                 titulo="Registro"
               ></FormularioRegistro>
             }

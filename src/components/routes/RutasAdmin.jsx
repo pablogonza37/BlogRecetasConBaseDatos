@@ -56,6 +56,7 @@ const RutasAdmin = ({usuarioLogueado}) => {
             element={
               <FormularioRegistro
                 editar={false}
+                rol={true}
                 titulo="Registro"
                 usuarioLogueado={usuarioLogueado}
               ></FormularioRegistro>
