@@ -9,7 +9,7 @@ import {
   editarUsuarioAPI,
 } from "../../../helpers/queries";
 
-const FormularioRegistro = ({ editar, titulo, usuarioLogueado }) => {
+const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol }) => {
   const {
     register,
     handleSubmit,
@@ -20,7 +20,7 @@ const FormularioRegistro = ({ editar, titulo, usuarioLogueado }) => {
   } = useForm();
   const navegacion = useNavigate();
   const [submitting, setSubmitting] = useState(false);
-  const [rolVisible, setRolVisible] = useState(editar);
+  const [rolVisible, setRolVisible] = useState(editar  || rol );
   const { id } = useParams();
   const [rolPorDefecto, setRolPorDefecto] = useState("usuario");
 

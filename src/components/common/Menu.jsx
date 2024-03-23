@@ -62,7 +62,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                 <NavLink
                   end
                   className="nav-link"
-                  to="/administrador/usuarios/crear"
+                  to="/registro"
                 >
                   Registro
                 </NavLink>
