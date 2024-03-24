@@ -1,11 +1,12 @@
+import React, { useState, useEffect } from "react";
 import { Container, Card, Col, Row, Button, Spinner } from "react-bootstrap";
 import CardReceta from "./receta/CardReceta";
-import { useEffect, useState } from "react";
 import { leerRecetasAPI } from "../../helpers/queries";
 
 const Inicio = () => {
   const [recetasInicio, setRecetasInicio] = useState([]);
   const [spinnerInicio, setSpinnerInicio] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     consultarAPI();
@@ -15,24 +16,18 @@ const Inicio = () => {
     try {
       setSpinnerInicio(true);
       const resp = await leerRecetasAPI();
-      setRecetasInicio(resp);
-      setSpinnerInicio(false);
+      if (resp && resp.length > 0) {
+        setRecetasInicio(resp);
+        setError(null);
+      }
     } catch (error) {
-      console.log(error);
+      setError("Error al cargar las recetas desde la API");
+      console.error(error);
+    } finally {
+      setSpinnerInicio(false);
     }
   };
 
-  const mostrarComponente = spinnerInicio ? (
-    <div className="my-4 text-center">
-      <Spinner animation="border" variant="dark" />
-    </div>
-  ) : (
-    <Row>
-      {recetasInicio.map((recetas) => (
-        <CardReceta key={recetas._id} receta={recetas}></CardReceta>
-      ))}
-    </Row>
-  );
   return (
     <section className="mainSection">
       <div className="relativeContainer">
@@ -46,10 +41,28 @@ const Inicio = () => {
         />
       </div>
       <Container className="mt-5">
-        <h2 className="display-4 ">Nuestras Recetas</h2>
+        <h2 className="display-4">Nuestras Recetas</h2>
         <hr />
-
-        {mostrarComponente}
+        {spinnerInicio && (
+          <div className="my-4 text-center">
+            <Spinner animation="border" variant="dark" />
+          </div>
+        )}
+        {error && (
+          <div className="alert alert-danger mt-3">
+            {error}
+          </div>
+        )}
+        {!spinnerInicio && !error && recetasInicio.length === 0 && (
+          <div className="alert alert-info mt-3">No hay recetas.</div>
+        )}
+        {!spinnerInicio && !error && recetasInicio.length > 0 && (
+          <Row>
+            {recetasInicio.map((receta) => (
+              <CardReceta key={receta._id} receta={receta} />
+            ))}
+          </Row>
+        )}
       </Container>
     </section>
   );
