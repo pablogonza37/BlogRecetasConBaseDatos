@@ -15,7 +15,7 @@ const RutasAdmin = ({usuarioLogueado}) => {
           element={
             <FormularioReceta
               editar={false}
-              titulo="Nuevo producto"
+              titulo="Nueva receta"
             ></FormularioReceta>
           }
         ></Route>
@@ -25,7 +25,7 @@ const RutasAdmin = ({usuarioLogueado}) => {
           element={
             <FormularioReceta
               editar={true}
-              titulo="Editar producto"
+              titulo="Editar receta"
             ></FormularioReceta>
           }
         ></Route>
@@ -57,7 +57,7 @@ const RutasAdmin = ({usuarioLogueado}) => {
               <FormularioRegistro
                 editar={false}
                 rol={true}
-                titulo="Registro"
+                titulo="Crear usuario"
                 usuarioLogueado={usuarioLogueado}
               ></FormularioRegistro>
             }
