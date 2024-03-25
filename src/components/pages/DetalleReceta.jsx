@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 const DetalleReceta = () => {
   const [recetaSelecionada, setRecetaSelecionada] = useState([]);
   const [spinnerDetalle, setSpinnerDetalle] = useState(true);
+  const [error, setError] = useState(null); 
 
   const { id } = useParams();
 
@@ -20,10 +21,13 @@ const DetalleReceta = () => {
       if (respuesta.status === 200) {
         const recetaEncontrada = await respuesta.json();
         setRecetaSelecionada(recetaEncontrada);
+      } else {
+        setError("Error al cargar los datos desde la API");
       }
-      setSpinnerDetalle(false);
     } catch (error) {
-      console.log(error);
+      setError("Error al cargar los datos desde la API");
+    } finally {
+      setSpinnerDetalle(false);
     }
   };
 
@@ -31,6 +35,8 @@ const DetalleReceta = () => {
     <div className="my-4 text-center">
       <Spinner animation="border" variant="dark" />
     </div>
+  ) : error ? (
+    <div className="alert alert-danger mt-3">{error}</div>
   ) : (
     <Card className="">
       <Row>
@@ -57,7 +63,7 @@ const DetalleReceta = () => {
         <hr />
 
         <Row>
-          <Col md={6} className="mb-sm-3 border border-dark rounded shadow">
+          <Col md={6} className="mb-3 border border-dark rounded shadow">
             <strong>Ingredientes:</strong> {recetaSelecionada.ingredientes}
           </Col>
           <Col md={6}>
@@ -69,7 +75,9 @@ const DetalleReceta = () => {
   );
 
   return (
-    <Container className="my-5 mainSection">{mostrarComponente}</Container>
+    <Container className="my-5 mainSection">
+      {mostrarComponente}
+    </Container>
   );
 };
 
