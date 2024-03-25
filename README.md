@@ -25,18 +25,8 @@ Puedes ver una demostración del proyecto en vivo en [Netlify](https://blog-rece
 ## Tecnologías Utilizadas
 
 - React: Biblioteca de JavaScript para la construcción de interfaces de usuario interactivas.
-- JSON-Server: Herramienta que permite simular una API RESTful utilizando un archivo JSON.
 - React Hook Form: Biblioteca para gestionar formularios en aplicaciones React.
 - React Router DOM: Librería para el enrutamiento de aplicaciones React.
-
-
-## Instalación
-
-- Clona este repositorio en tu máquina local.
-- Navega hasta el directorio del proyecto.
-- Ejecuta npm install para instalar las dependencias.
-- Ejecuta npm start para iniciar la aplicación en modo de desarrollo.
-- Ejecuta npm run server para iniciar el servidor JSON-Server.
 
 
 ## Contribución
