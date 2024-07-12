@@ -14,9 +14,14 @@ import RutasAdmin from "./components/routes/RutasAdmin";
 import { useState } from "react";
 
 function App() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const usuario =
     JSON.parse(sessionStorage.getItem("usuarioRollingRecetas")) || "";
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
+
+  const handleCloseLoginModal = () => setShowLoginModal(false);
+  const handleShowLoginModal = () => setShowLoginModal(true);
+
 
   return (
     <>
@@ -24,9 +29,12 @@ function App() {
         <Menu
           usuarioLogueado={usuarioLogueado}
           setUsuarioLogueado={setUsuarioLogueado}
+          handleShowLoginModal={handleShowLoginModal}
+          handleCloseLoginModal={handleCloseLoginModal}
+          showLoginModal={showLoginModal}
         ></Menu>
         <Routes>
-          <Route exact path="/" element={<Inicio></Inicio>}></Route>
+          <Route exact path="/" element={<Inicio usuarioLogueado={usuarioLogueado} handleShowLoginModal={handleShowLoginModal}></Inicio>}></Route>
           <Route
             exact
             path="/administrador/*"
@@ -49,18 +57,17 @@ function App() {
                 editar={false}
                 rol={false}
                 titulo="Registro"
+                handleShowLoginModal={handleShowLoginModal}
+                handleCloseLoginModal={handleCloseLoginModal}
               ></FormularioRegistro>
             }
           ></Route>
-          <Route
-            exact
-            path="/login"
-            element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
-          ></Route>
+          
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
+      
     </>
   );
 }

@@ -10,7 +10,6 @@
   flex-grow: 1;
 }
 
-
 .banner {
   object-fit: cover;
   height: 550px;
@@ -26,7 +25,7 @@
 }
 
 .nav {
-  background-color: rgba(231, 231, 6, 0.795);
+  background-color: rgb(231, 231, 6);
 }
 
 .card-img-top-nueva {

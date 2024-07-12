@@ -9,7 +9,7 @@ import {
   editarUsuarioAPI,
 } from "../../../helpers/queries";
 
-const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol }) => {
+const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol, handleShowLoginModal }) => {
   const {
     register,
     handleSubmit,
@@ -45,27 +45,27 @@ const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol }) => {
   };
 
   const onSubmit = async (data) => {
+    
     const usuario = {
-      nombre: data.nombre,
+      nombreUsuario: data.nombre,
       email: data.email,
       rol: data.rol || rolPorDefecto,
       password: data.password,
-      confirmarContraseña: data.confirmarContraseña,
     };
-
+    console.log(usuario)
     if (editar) {
       const respuesta = await editarUsuarioAPI(usuario, id);
       if (respuesta.status === 200) {
         Swal.fire({
           title: "Usuario modificado",
-          text: `El usuario "${usuario.nombre}" fue modificado correctamente`,
+          text: `El usuario "${usuario.nombreUsuario}" fue modificado correctamente`,
           icon: "success",
         });
         navegacion("/administrador/usuarios");
       } else {
         Swal.fire({
           title: "Ocurrió un error",
-          text: `El usuario "${usuario.nombre}" no pudo ser modificado. Intente esta operación en unos minutos`,
+          text: `El usuario "${usuario.nombreUsuario}" no pudo ser modificado. Intente esta operación en unos minutos`,
           icon: "error",
         });
       }
@@ -82,15 +82,12 @@ const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol }) => {
           icon: "success",
         });
         reset();
-        if(usuarioLogueado === ''){
-          navegacion('/');
-        }
-    
-        
+        navegacion('/');
+        handleShowLoginModal()
       } else {
         Swal.fire({
           title: "Ocurrió un error",
-          text: `El usuario "${usuario.nombre}" no pudo ser registrado. Intente esta operación en unos minutos`,
+          text: `El usuario "${usuario.nombreUsuario}" no pudo ser registrado. Intente esta operación en unos minutos`,
           icon: "error",
         });
       }
@@ -108,7 +105,7 @@ const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol }) => {
         <Form.Group className="mb-3" controlId="formNombre">
           <h1 className="display-4 mb-4">{titulo}</h1>
           <hr />
-          <Form.Label>Nombre*</Form.Label>
+          <Form.Label>Nombre de usuario*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: nombre"
@@ -158,7 +155,7 @@ const FormularioRegistro = ({ editar, titulo, usuarioLogueado, rol }) => {
               })}
             >
               <option value="usuario">Usuario</option>
-              <option value="administrador">Administrador</option>
+              <option value="admin">Administrador</option>
             </Form.Select>
             <Form.Text className="text-danger">
               {errors.rol?.message}
