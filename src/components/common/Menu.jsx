@@ -6,13 +6,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
   const logout = () => {
-    sessionStorage.removeItem("usuarioRollingrecetas");
+    sessionStorage.removeItem("usuarioRollingRecetas");
     setUsuarioLogueado("");
     navegacion("/");
   };
 
   return (
-    <Navbar expand="lg" className="shadow nav">
+    <Navbar expand="lg" className="shadow nav menu">
       <Container>
         <Navbar.Brand href="#" className="me-auto" as={Link} to="/">
           <img src={logo} alt="logo" className="img-fluid" width={150} />
@@ -20,8 +20,8 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <NavLink end className="nav-link" to="/">
-              Inicio
+            <NavLink end className="nav-link cta" to="/">
+            <span className="hover-underline-animation">Inicio</span>
             </NavLink>
             {usuarioLogueado !== "" ? (
               <>
@@ -50,24 +50,24 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                   </Nav>
                 </Navbar.Collapse>
                 <Button
-                  className="nav-link text-start"
+                  className="nav-link text-start cta"
                   variant="link"
                   onClick={logout}
                 >
-                  logout
+                  <span className="hover-underline-animation">Cerrar sesion</span>
                 </Button>
               </>
             ) : (
               <>
                 <NavLink
                   end
-                  className="nav-link"
+                  className="nav-link cta"
                   to="/registro"
                 >
-                  Registro
-                </NavLink>
-                <NavLink end className="nav-link" to="/login">
-                  Login
+                  <span className="hover-underline-animation">Registro</span>
+                </NavLink >
+                <NavLink end className="nav-link cta" to="/login">
+                <span className="hover-underline-animation">Iniciar sesion</span>
                 </NavLink>
               </>
             )}

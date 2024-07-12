@@ -13,15 +13,23 @@ const Login = ({setUsuarioLogueado}) => {
   } = useForm();
   const navegacion = useNavigate();
 
-  const onSubmit = (usuario) => {
-    if (login(usuario)) {
+  const onSubmit = async (usuario) => {
+    console.log(usuario)
+    const respuesta = await login(usuario);
+    
+    if ( respuesta.status === 200) {
+      const datos = await respuesta.json();
+      sessionStorage.setItem(
+        "usuarioRollingRecetas",
+        JSON.stringify({ email: datos.email, token: datos.token, rol:datos.rol, nombreUsuario: datos.nombreUsuario})
+      );
       Swal.fire({
         title: "Usuario logueado",
-        text: `Bienvenido "${usuario.mail}"`,
+        text: `Bienvenido "${usuario.nombreUsuario}"`,
         icon: "success",
       });
       navegacion('/administrador/recetas');
-      setUsuarioLogueado(usuario.mail);
+      setUsuarioLogueado(usuario.email);
     } else {
       Swal.fire({
         title: "Ocurrio un error",
@@ -42,7 +50,7 @@ const Login = ({setUsuarioLogueado}) => {
               <Form.Control
                 type="email"
                 placeholder="name@example.com"
-                {...register("mail", {
+                {...register("email", {
                   required: "Email es requerido",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,

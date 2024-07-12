@@ -10,9 +10,10 @@
   flex-grow: 1;
 }
 
+
 .banner {
   object-fit: cover;
-  height: 395px;
+  height: 550px;
   width: 100%;
   display: block;
   z-index: 0;
@@ -55,4 +56,8 @@
 
 .nav-link:hover {
   text-decoration: underline;
+
 }
+
+
+  

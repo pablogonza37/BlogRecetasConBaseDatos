@@ -1,5 +1,6 @@
 const URL_Recetas = import.meta.env.VITE_API_RECETAS;
 const URL_Usuarios = import.meta.env.VITE_API_USUARIOS;
+const URL_Login = import.meta.env.VITE_API_LOGIN;
 
 export const leerRecetasAPI = async () => {
   try {
@@ -63,6 +64,7 @@ export const crearRecetaAPI = async (recetaNueva) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'x-token': JSON.parse(sessionStorage.getItem('usuarioRollingRecetas')).token
       },
       body: JSON.stringify(recetaNueva),
     });
@@ -100,6 +102,7 @@ export const editarRecetaAPI = async (recetaModificada, id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        'x-token': JSON.parse(sessionStorage.getItem('usuarioRollingRecetas')).token
       },
       body: JSON.stringify(recetaModificada),
     });
@@ -125,22 +128,18 @@ export const editarUsuarioAPI = async (usuarioModificado, id) => {
 };
 
 
-const userAdmin = {
-  mail: "admin@rollingrecetas.com",
-  password: "prueba123",
-};
-
-export const login = (usuario) => {
-  if (
-    usuario.mail === userAdmin.mail &&
-    usuario.password === userAdmin.password
-  ) {
-    sessionStorage.setItem(
-      "usuarioRollingRecetas",
-      JSON.stringify(usuario.mail)
-    );
-    return true;
-  }else {
-    return false;
+export const login = async (usuario) =>{
+  try {
+    const respuesta = await fetch(URL_Login, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return  respuesta
+  } catch (error) {
+    console.log("errores en el login");
+    return;
   }
-};
+}
