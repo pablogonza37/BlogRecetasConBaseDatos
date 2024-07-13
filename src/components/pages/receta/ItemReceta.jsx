@@ -55,7 +55,7 @@ const ItemReceta = ({ receta, setData }) => {
         >
           <i className="bi bi-pencil-square"></i>
         </Link>
-        <Button variant="danger" onClick={borrarReceta}>
+        <Button variant="danger" className="me-1" onClick={borrarReceta}>
           <i className="bi bi-trash"></i>
         </Button>
       </td>

@@ -8,7 +8,7 @@ const RutasAdmin = ({usuarioLogueado}) => {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Administrador></Administrador>}></Route>
+        <Route exact path="/" element={<Administrador usuarioLogueado={usuarioLogueado}></Administrador>}></Route>
         <Route
           exact
           path="recetas/crear"

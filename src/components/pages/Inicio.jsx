@@ -3,7 +3,7 @@ import { Container, Card, Col, Row, Button, Spinner } from "react-bootstrap";
 import CardReceta from "./receta/CardReceta";
 import { leerRecetasAPI } from "../../helpers/queries";
 
-const Inicio = () => {
+const Inicio = ({ usuarioLogueado, handleShowLoginModal }) => {
   const [recetasInicio, setRecetasInicio] = useState([]);
   const [spinnerInicio, setSpinnerInicio] = useState(true);
   const [error, setError] = useState(null);
@@ -29,14 +29,15 @@ const Inicio = () => {
   };
 
   return (
-    <section className="mainSection">
+    <section className="mainSection mt-5">
       <div className="relativeContainer">
         <h1 className="slogan text-white display-2 text-center">
           ¡Sabor y pasión en cada plato!
         </h1>
         <img
           className="banner shadow"
-          src="https://images.pexels.com/photos/8629042/pexels-photo-8629042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="https://images.pexels.com/photos/3771120/pexels-photo-3771120.jpeg"
+          
           alt="imagen banner"
         />
       </div>
@@ -59,7 +60,7 @@ const Inicio = () => {
         {!spinnerInicio && !error && recetasInicio.length > 0 && (
           <Row>
             {recetasInicio.map((receta) => (
-              <CardReceta key={receta._id} receta={receta} />
+              <CardReceta key={receta._id} receta={receta} usuarioLogueado={usuarioLogueado} handleShowLoginModal={handleShowLoginModal}/>
             ))}
           </Row>
         )}

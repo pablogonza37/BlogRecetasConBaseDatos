@@ -1,7 +1,19 @@
 import { Col, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const CardReceta = ({ receta }) => {
+
+const CardReceta = ({ receta, usuarioLogueado, handleShowLoginModal}) => {
+  const navegacion = useNavigate();
+
+  const btnDetalle = () => {
+    if(usuarioLogueado){
+      navegacion("/detalle/" + receta._id);
+    }else {
+      handleShowLoginModal()
+    }
+    
+}
+
   return (
     <Col lg={4} className="mb-3">
       <Card className="h-100 rounded shadow">
@@ -21,9 +33,9 @@ const CardReceta = ({ receta }) => {
           <Card.Text>{receta.descripcion}</Card.Text>
         </Card.Body>
         <Card.Footer className="text-end">
-          <Link className="btn btn-success me-2" to={"/detalle/" + receta._id}>
-            Ver más
-          </Link>
+          <Button className="btn btn-success me-2" onClick={btnDetalle}>
+            Ver receta
+          </Button>
         </Card.Footer>
       </Card>
     </Col>

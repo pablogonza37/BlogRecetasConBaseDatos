@@ -20,7 +20,7 @@ const ItemUsuario = ({ usuario, setData}) => {
         if (respuesta.status === 200) {
           Swal.fire({
             title: "UsuarioEliminado",
-            text: `El usuario "${usuario.nombre}" fue eliminado correctamente`,
+            text: `El usuario "${usuario.nombreUsuario}" fue eliminado correctamente`,
             icon: "success",
           });
 
@@ -29,7 +29,7 @@ const ItemUsuario = ({ usuario, setData}) => {
         } else {
           Swal.fire({
             title: "Ocurrio un error",
-            text: `El usuarios "${usuario.nombre}" no fue eliminado. Intente realizar esta operación en unos minutos`,
+            text: `El usuarios "${usuario.nombreUsuario}" no fue eliminado. Intente realizar esta operación en unos minutos`,
             icon: "error",
           });
         }
@@ -40,7 +40,7 @@ const ItemUsuario = ({ usuario, setData}) => {
 
   return (
     <tr>
-      <td>{usuario.nombre}</td>
+      <td>{usuario.nombreUsuario}</td>
       <td>{usuario.email}</td>
       <td>{usuario.rol}</td>
       <td className="text-center">
@@ -50,7 +50,7 @@ const ItemUsuario = ({ usuario, setData}) => {
         >
           <i className="bi bi-pencil-square"></i>
         </Link>
-        <Button variant="danger" onClick={borrarUsuario}>
+        <Button variant="danger" onClick={borrarUsuario} disabled={usuario.rol === 'admin'}>
           <i className="bi bi-trash"></i>
         </Button>
       </td>

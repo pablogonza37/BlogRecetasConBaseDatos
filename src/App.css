@@ -8,11 +8,12 @@
 }
 .mainSection {
   flex-grow: 1;
+  margin-top: 100px;
 }
 
 .banner {
   object-fit: cover;
-  height: 395px;
+  height: 550px;
   width: 100%;
   display: block;
   z-index: 0;
@@ -25,7 +26,7 @@
 }
 
 .nav {
-  background-color: rgba(231, 231, 6, 0.795);
+  background-color: rgb(231, 231, 6);
 }
 
 .card-img-top-nueva {
@@ -55,4 +56,8 @@
 
 .nav-link:hover {
   text-decoration: underline;
+
 }
+
+
+  
