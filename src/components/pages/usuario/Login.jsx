@@ -49,7 +49,7 @@ const Login = ({ show, onHide, setUsuarioLogueado }) => {
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Iniciar sesion</Modal.Title>
+        <Modal.Title>Iniciar sesión</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -71,11 +71,11 @@ const Login = ({ show, onHide, setUsuarioLogueado }) => {
             </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Contraseña</Form.Label>
             <Col>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 {...register("password", {
                   required: "Contraseña es requerida",
                   minLength: {

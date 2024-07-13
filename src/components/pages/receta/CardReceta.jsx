@@ -34,7 +34,7 @@ const CardReceta = ({ receta, usuarioLogueado, handleShowLoginModal}) => {
         </Card.Body>
         <Card.Footer className="text-end">
           <Button className="btn btn-success me-2" onClick={btnDetalle}>
-            Ver más
+            Ver receta
           </Button>
         </Card.Footer>
       </Card>

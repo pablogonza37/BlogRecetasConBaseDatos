@@ -1,5 +1,5 @@
 import { Nav, Navbar, Container, Button, Modal } from "react-bootstrap";
-import logo from "../../assets/logoRecetas.png";
+import logo from "../../assets/logoRecetas1.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Login from "../pages/usuario/Login";
@@ -24,7 +24,7 @@ const Menu = ({
       <Navbar expand="lg" className="shadow nav menu position-fixed z-3 w-100">
         <Container>
           <Navbar.Brand href="#" className="me-auto" as={Link} to="/">
-            <img src={logo} alt="logo" className="img-fluid" width={150} />
+            <img src={logo} alt="logo" className="img-fluid" width={130} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -62,23 +62,23 @@ const Menu = ({
                     variant="link"
                     onClick={logout}
                   >
-                    <span className="hover-underline-animation">
-                      Cerrar sesion
+                    <span className="hover-underline-animation lead border border-2 border-dark rounded p-2">
+                      Cerrar sesión
                     </span>
                   </Button>
                 </>
               ) : (
                 <>
                   <NavLink end className="nav-link cta" to="/registro">
-                    <span className="hover-underline-animation">Registro</span>
+                    <span className="hover-underline-animation lead ">Registro</span>
                   </NavLink>
                   <NavLink
                     end
                     className="nav-link cta"
                     onClick={handleShowLoginModal}
                   >
-                    <span className="hover-underline-animation">
-                      Iniciar sesion
+                    <span className="hover-underline-animation lead border border-2 border-dark rounded p-2">
+                      Iniciar sesión
                     </span>
                   </NavLink>
                 </>
