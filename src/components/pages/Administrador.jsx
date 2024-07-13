@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { leerRecetasAPI, leerUsuariosAPI } from "../../helpers/queries";
 import React from 'react';
 
-const Administrador = ({ tipo }) => { 
+const Administrador = ({ tipo, usuarioLogueado }) => { 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -52,7 +52,7 @@ const Administrador = ({ tipo }) => {
         {data.map((item) => (
           <React.Fragment key={item._id}>
             {tipo === "usuarios" ? (
-              <ItemUsuario usuario={item} setData={setData} />
+              <ItemUsuario usuario={item} setData={setData} usuarioLogueado={usuarioLogueado}/>
             ) : (
               <ItemReceta receta={item} setData={setData} />
             )}

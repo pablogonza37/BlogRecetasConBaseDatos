@@ -50,12 +50,12 @@ const ItemReceta = ({ receta, setData }) => {
       <td>{receta.categoria}</td>
       <td className="text-center">
         <Link
-          className="btn btn-warning me-1"
+          className="btn btn-warning me-1 mb-1"
           to={"/administrador/recetas/editar/" + receta._id}
         >
           <i className="bi bi-pencil-square"></i>
         </Link>
-        <Button variant="danger" onClick={borrarReceta}>
+        <Button variant="danger" className="me-1" onClick={borrarReceta}>
           <i className="bi bi-trash"></i>
         </Button>
       </td>

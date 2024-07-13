@@ -75,7 +75,7 @@ const DetalleReceta = () => {
   );
 
   return (
-    <Container className="my-5 mainSection">
+    <Container className=" mainSection">
       {mostrarComponente}
     </Container>
   );

@@ -13,7 +13,6 @@ const Login = ({ show, onHide, setUsuarioLogueado }) => {
   } = useForm();
 
   const onSubmit = async (usuario) => {
-    console.log(usuario);
     const respuesta = await login(usuario);
 
     if (respuesta.status === 200) {
@@ -33,7 +32,7 @@ const Login = ({ show, onHide, setUsuarioLogueado }) => {
         icon: "success",
       });
       onHide();
-      setUsuarioLogueado(datos.email);
+      setUsuarioLogueado(datos);
     } else {
       Swal.fire({
         title: "Ocurrio un error",
